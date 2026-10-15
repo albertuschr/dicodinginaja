@@ -116,11 +116,29 @@ function App() {
     const dialog = useRef(null);
     const trigger = useRef(null);
 
-    useEffect(() => {
-        const t = setTimeout(() => setIntro(false), 1500);
-        return () => clearTimeout(t);
-    }, []);
+    // useEffect(() => {
+    //     const t = setTimeout(() => setIntro(false), 1500);
+    //     return () => clearTimeout(t);
+    // }, []);
 
+    useEffect(() => {
+    if (!intro) return;
+
+    const html = document.documentElement;
+    const body = document.body;
+
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyOverflow = body.style.overflow;
+
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+
+    return () => {
+        html.style.overflow = previousHtmlOverflow;
+        body.style.overflow = previousBodyOverflow;
+    };
+}, [intro]);
+    
     useEffect(() => {
         if (!running) return;
         [1, 2, 3].forEach((n) =>
@@ -192,11 +210,20 @@ function App() {
 
     return (
         <>
-            <div className={'intro ' + (!intro ? 'done' : '')} aria-hidden="true">
-                <img className="intro-mascot" src="/assets/mascot.png" alt="" />
-                <span className="intro-mark">dicodingin<span>AJA</span>.</span>
-                <span>Siap bantu kerja Anda.</span>
-            </div>
+        <div
+            className={`intro ${!intro ? 'done' : ''}`}
+            aria-hidden="true"
+>
+            <video
+                className="intro-video"
+                src="/assets/bumper.mov"
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setIntro(false)}
+                onError={() => setIntro(false)}
+            />
+        </div>
 
             <header>
                 <div className="nav shell">
