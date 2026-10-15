@@ -233,9 +233,9 @@ function App() {
                             <button className="button orange" onClick={() => setModal('Konsultasi gratis')}>
                                 Konsultasi gratis <ArrowUpRight size={20} />
                             </button>
-                            <a className="text-link" href="#demo">
+                            {/* <a className="text-link" href="#demo">
                                 <span className="play"><Play size={13} fill="currentColor" /></span> Lihat cara kerjanya
-                            </a>
+                            </a> */}
                         </div>
                         <div className="hero-note">
                             <Check size={14} /> Sesuai alur bisnis Anda <span>·</span> Demo sebelum go-live
