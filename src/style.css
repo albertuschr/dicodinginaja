@@ -673,13 +673,16 @@ h2 {
 /* ── Footer ── */
 footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 25px;
+  justify-content: center;
+  gap: 14px;
   padding: 48px 0 40px;
+  text-align: center;
 }
 footer .brand   { font-size: 21px; }
 footer p        { font-size: 10px; color: #758389; }
-footer > span   { margin-left: auto; font-size: 9px; color: #758389; }
+footer > span   { font-size: 9px; color: #758389; }
 footer > a:last-child { font-size: 9px; }
 .mobile-break { display: none; }
 
@@ -848,15 +851,19 @@ input, textarea {
   .hero-art {
     margin-top: 20px;
     width: min(410px, 100%);
-    height: 420px;
-    min-height: 420px;
+    height: 440px;
+    min-height: 440px;
     justify-self: center;
   }
-  .orb         { width: 315px; height: 315px; left: 40px; top: 45px; }
-  .mascot      { height: 390px; width: 270px; left: 65px; bottom: 0; }
+  .orb         { width: min(315px, calc(100% - 30px)); height: min(315px, calc(100% - 30px)); left: 50%; transform: translateX(-50%); top: 58px; }
+  .mascot      { height: 390px; width: 270px; left: 50%; margin-left: -135px; bottom: 0; }
   .orb-label   { top: 37px; left: 30px; font-size: 7px; }
-  .message     { top: 105px; right: -5px; }
-  .sheet       { bottom: 50px; left: -5px; }
+  .message     { top: 8px; right: 0; }
+  .sheet       { bottom: 8px; left: 0; }
+  .float-card  { padding: 10px 12px; gap: 9px; }
+  .float-card strong { font-size: 9px; white-space: nowrap; }
+  .float-card small { margin-bottom: 4px; }
+  .app-icon    { width: 32px; height: 32px; }
   .mini-label  { font-size: 8px; right: 12px; bottom: 5px; }
   .one         { top: 22px; right: 12px; }
   .two         { left: 10px; }
@@ -918,17 +925,38 @@ input, textarea {
   .contact-star        { right: 23px; top: 75px; font-size: 45px; }
   footer {
     padding: 32px 0;
-    gap: 16px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  footer p          { grid-column: 1 / -1; grid-row: 2; margin: 0; }
-  footer > span     { margin: 0; font-size: 8px; }
-  footer > a:last-child { text-align: right; }
+  footer .brand     { font-size: 21px; }
+  footer > span     { margin: 0; font-size: 8px; white-space: nowrap; }
+  footer > a:last-child { text-align: center; }
   .modal-inner      { padding: 30px 24px; }
   .modal-inner .button { width: 100%; }
   .recommendation-result { align-items: flex-start; }
   .result-jump { margin-left: 0; }
+}
+
+@media (max-width: 400px) {
+  .shell { width: calc(100% - 28px); }
+  .nav-cta { padding: 9px 8px; }
+  .nav-cta svg { width: 14px; }
+  .hero-art {
+    width: 100%;
+    height: 410px;
+    min-height: 410px;
+  }
+  .mascot { height: 350px; width: 245px; margin-left: -122.5px; }
+  .orb { width: 275px; height: 275px; top: 55px; }
+  .message { right: -2px; }
+  .sheet { left: -2px; }
+  .float-card { padding: 8px 10px; gap: 7px; }
+  .float-card strong { font-size: 8px; }
+  .float-card small { font-size: 6px; }
+  .app-icon { width: 29px; height: 29px; }
+  .app-icon svg { width: 17px; }
 }
 
 /* ── Reduced motion ── */

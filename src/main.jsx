@@ -238,7 +238,7 @@ function App() {
                             </a> */}
                         </div>
                         <div className="hero-note">
-                            <Check size={14} /> Sesuai alur bisnis Anda <span>·</span> Demo sebelum go-live
+                            <Check size={14} /> Sesuai alur bisnis Anda 
                         </div>
                     </div>
 
