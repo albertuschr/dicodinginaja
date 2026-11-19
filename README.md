@@ -8,10 +8,9 @@ Run `npm install`, then `npx vite`. Production: `npm run build`.
 
 ## Content to finalize
 
-- Packages: Basic starts from Rp200,000 (template only; installation from Rp350,000; menu chatbot from Rp650,000), Premium from Rp1,500,000, Custom quoted after consultation. Prices follow supplied references.
-- Set `WHATSAPP_NUMBER` in `src/recommendation.js` only after business number confirmation, in international digits-only format. The modal then opens WhatsApp with an encoded brief including ALL selected needs, recommendation, chosen package, name and notes. Until configured, copying the brief remains available. No data is sent automatically.
-- Recommendation: one simple need → Basic; AI/data processing or 2–3 needs → Premium; any advanced integration/operations requirement or 4+ needs → Custom. Clearing choices removes the recommendation.
-- Workflow demo is illustrative and does not call external services.
+- The pricing section presents six plain-language ready-to-use products with filters for n8n, WhatsApp, Telegram, and Google Sheets, plus a separate custom-project view.
+- Set `WHATSAPP_NUMBER` in `src/recommendation.js` only after business number confirmation, in international digits-only format. Product and custom-project CTAs open a modal with an encoded consultation brief. Until configured, copying the brief remains available. No data is sent automatically.
+- The former interactive workflow demo has been removed; the page now focuses on understandable products and the custom-project path.
 - No customer counts, testimonials, or invented performance claims are included.
 
 ## Visuals

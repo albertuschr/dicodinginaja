@@ -1,93 +1,220 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { View, Text, Pressable } from 'react-native-web';
 import {
-    ArrowUpRight, ArrowRight, Plus, Minus, Check, MessageCircle, Send,
-    Workflow, FileSpreadsheet, Boxes, FileText, Users, Play, RotateCcw,
-    X, Menu, Copy, CheckCheck, ChevronDown, Zap
+    ArrowUpRight, Plus, Minus, Check, MessageCircle, Send,
+    Workflow, FileSpreadsheet, Boxes, FileText, X, Menu, Copy, CheckCheck
 } from 'lucide-react';
 import './style.css';
-import { needs, recommend, makeBrief, whatsappUrl, WHATSAPP_NUMBER } from './recommendation.js';
+import { makeBrief, whatsappUrl, WHATSAPP_NUMBER } from './recommendation.js';
 
 const services = [
     {
         title: 'Chatbot & customer service',
-        desc: 'Pertanyaan berulang? Biar bot yang bantu jawab. Hubungkan WhatsApp API atau Telegram dengan alur layanan bisnis Anda.',
-        tags: ['WhatsApp API', 'Bot Telegram', 'AI chatbot'],
+        desc: 'Jawab pertanyaan pelanggan, kirim katalog, dan terima order dari channel yang mereka gunakan.',
+        tags: ['WhatsApp', 'E-commerce', 'Website'],
         icon: MessageCircle
     },
     {
-        title: 'Data & laporan otomatis',
-        desc: 'Dari input data sampai rekap keuangan. Satukan informasi agar tim tidak perlu salin-tempel setiap hari.',
-        tags: ['Google Sheets', 'Rekap keuangan', 'Document processing'],
+        title: 'Data, laporan & finance',
+        desc: 'Rapikan input data, rekap penjualan, invoice, dan laporan keuangan dari sumber yang sudah digunakan.',
+        tags: ['Google Sheets', 'Finance', 'Reports'],
         icon: FileSpreadsheet
     },
     {
-        title: 'Operasional & integrasi',
-        desc: 'Buat tools yang sudah dipakai saling terhubung. Atur inventori, alur kerja tim, dan pertukaran data melalui API.',
-        tags: ['Inventori', 'Workforce management', 'API integration'],
+        title: 'Website, app & operations',
+        desc: 'Bangun website, mobile app, POS, atau sistem internal yang sesuai dengan proses kerja Anda.',
+        tags: ['Website', 'Mobile app', 'POS'],
         icon: Workflow
     }
 ];
 
-const plans = [
+const products = [
     {
-        name: 'Basic',
+        id: 'logger-whatsapp',
+        name: 'Logger WhatsApp → Google Sheets',
+        description: 'Setiap pesan masuk tercatat otomatis ke spreadsheet.',
+        preview: 'alur n8n',
+        category: 'Automation',
         price: 'Rp200.000',
-        lead: 'Satu alur sederhana, mulai dari template.',
-        features: [
-            'Template n8n: satu alur siap pakai',
-            'Template + instalasi mulai Rp350.000',
-            'Chatbot dengan menu mulai Rp650.000',
-            'Panduan & uji coba untuk opsi instalasi'
-        ],
-        for: 'Harga awal untuk template saja, tanpa instalasi.',
-        note: 'Estimasi 1–3 hari, sesuai opsi.'
+        priceNote: '+ instalasi Rp150.000',
+        timing: 'Unduh instan',
+        features: ['File workflow n8n (.json)', 'Panduan setup PDF', 'Contoh sheet siap salin'],
+        icon: FileSpreadsheet
     },
     {
-        name: 'Premium',
+        id: 'chatbot-menu',
+        name: 'Chatbot WhatsApp dengan Menu',
+        description: 'Balasan otomatis bertingkat untuk FAQ, katalog, dan jam buka.',
+        preview: 'menu chatbot',
+        category: 'Chatbot',
+        price: 'Rp650.000',
+        priceNote: 'Termasuk instalasi',
+        timing: '1–3 hari',
+        features: ['Hingga 10 menu & sub-menu', 'Instalasi & uji coba', 'Panduan edit isi menu'],
+        icon: MessageCircle
+    },
+    {
+        id: 'telegram-notification',
+        name: 'Bot Telegram Notifikasi Pesanan',
+        description: 'Kirim notifikasi ke grup tim setiap ada pesanan atau form baru.',
+        preview: 'notifikasi bot',
+        category: 'Chatbot',
+        price: 'Rp250.000',
+        priceNote: '+ instalasi Rp150.000',
+        timing: 'Unduh instan',
+        features: ['Template bot + webhook', 'Format pesan bisa diubah', 'Panduan setup PDF'],
+        icon: Send
+    },
+    {
+        id: 'stock-inventory',
+        name: 'Sheet Stok & Inventori',
+        description: 'Stok masuk-keluar, peringatan stok menipis, dan rekap bulanan.',
+        preview: 'sheet stok',
+        category: 'Automation',
+        price: 'Rp150.000',
+        priceNote: 'Template saja',
+        timing: 'Unduh instan',
+        features: ['Template Google Sheets', 'Apps Script peringatan', 'Video panduan singkat'],
+        icon: Boxes
+    },
+    {
+        id: 'invoice-email',
+        name: 'Invoice Otomatis ke Email',
+        description: 'Isi baris di Sheets, invoice PDF terkirim ke pelanggan.',
+        preview: 'invoice PDF',
+        category: 'Automation',
+        price: 'Rp250.000',
+        priceNote: '+ instalasi Rp150.000',
+        timing: 'Unduh instan',
+        features: ['Template invoice + Sheets', 'Apps Script kirim email', 'Panduan setup PDF'],
+        icon: FileText
+    },
+    {
+        id: 'ai-whatsapp',
+        name: 'Paket Chatbot AI WhatsApp',
+        description: 'WhatsApp terhubung ke Gemini AI, percakapan tercatat di Sheets.',
+        preview: 'chat AI',
+        category: 'Chatbot',
         price: 'Rp1.500.000',
-        lead: 'Chatbot AI dan pencatatan yang terhubung.',
-        features: [
-            'WhatsApp terhubung ke Gemini AI',
-            'Percakapan tercatat di Google Sheets',
-            'Integrasi teks, gambar, dan file sesuai alur',
-            'Penyesuaian alur, 1 revisi & SOP PDF'
-        ],
-        for: 'Untuk alur WhatsApp → AI → Google Sheets.',
-        note: 'Estimasi 5 hari, sesuai cakupan.'
+        priceNote: 'Termasuk instalasi',
+        timing: '± 5 hari',
+        features: ['Integrasi teks, gambar, file', '1 revisi & SOP PDF', 'Instalasi & uji coba'],
+        icon: Workflow
     },
     {
-        name: 'Custom',
-        price: null,
-        lead: 'Alur khusus untuk operasional bisnis Anda.',
-        features: [
-            'Pemetaan proses & kebutuhan integrasi',
-            'API khusus atau alur lintas platform',
-            'Inventori, dokumen, atau manajemen tim',
-            'Cakupan, revisi & dukungan disepakati'
-        ],
-        for: 'Penawaran setelah konsultasi kebutuhan.',
-        note: 'Waktu pengerjaan mengikuti cakupan.'
+        id: 'website',
+        name: 'Website & Web Platform',
+        description: 'Mulai dari landing page hingga platform web dengan fitur dan akses pengguna.',
+        preview: 'web platform',
+        category: 'Website',
+        price: 'Custom quote',
+        priceNote: 'Sesuai scope',
+        timing: 'By scope',
+        features: ['Landing page & company profile', 'Web app dengan login dan dashboard', 'Responsive design'],
+        icon: Workflow
+    },
+    {
+        id: 'mobile-app',
+        name: 'Mobile App iOS & Android',
+        description: 'Aplikasi mobile untuk pelanggan, tim internal, atau kebutuhan operasional.',
+        preview: 'mobile app',
+        category: 'Mobile',
+        price: 'Custom quote',
+        priceNote: 'Essential → Custom',
+        timing: 'By scope',
+        features: ['Satu codebase untuk iOS & Android', 'Essential hingga custom feature', 'Rilis dan maintenance plan'],
+        icon: Boxes
+    },
+    {
+        id: 'pos',
+        name: 'POS & Retail System',
+        description: 'Sistem kasir dan operasional toko untuk satu outlet hingga banyak cabang.',
+        preview: 'point of sale',
+        category: 'POS',
+        price: 'Custom quote',
+        priceNote: 'Lite → Enterprise',
+        timing: 'By scope',
+        features: ['Kasir, produk, dan stok', 'Laporan per outlet dan cabang', 'Odoo-powered untuk kebutuhan enterprise'],
+        icon: Boxes
+    },
+    {
+        id: 'chatbot-channel',
+        name: 'Chatbot Multi-channel',
+        description: 'Chatbot untuk WhatsApp, e-commerce, website, atau private server.',
+        preview: 'multi-channel bot',
+        category: 'Chatbot',
+        price: 'Custom quote',
+        priceNote: 'Sesuai channel',
+        timing: 'By scope',
+        features: ['FAQ dan katalog otomatis', 'WhatsApp, e-commerce, dan website', 'Private server tersedia'],
+        icon: MessageCircle
+    },
+    {
+        id: 'convera',
+        name: 'Convera Ads Intelligence',
+        description: 'Hubungkan data iklan dengan penjualan untuk melihat channel yang benar-benar menghasilkan.',
+        preview: 'ads to sales',
+        category: 'Convera',
+        price: 'Custom quote',
+        priceNote: 'Essential → Enterprise',
+        timing: 'By scope',
+        features: ['Tracking campaign dan conversion', 'Dashboard performa iklan', 'Data siap dipakai untuk keputusan'],
+        icon: FileSpreadsheet
+    },
+    {
+        id: 'sheets-automation',
+        name: 'Sheets Automation',
+        description: 'Spreadsheet yang membantu input, validasi, notifikasi, dan laporan berjalan otomatis.',
+        preview: 'spreadsheet flow',
+        category: 'Automation',
+        price: 'Custom quote',
+        priceNote: 'Essential → Custom',
+        timing: 'By scope',
+        features: ['Google Sheets & Apps Script', 'Notifikasi dan approval flow', 'Template sampai custom system'],
+        icon: FileSpreadsheet
+    },
+    {
+        id: 'finance-automation',
+        name: 'Finance Automation',
+        description: 'Kurangi pekerjaan rekap dan susun laporan keuangan dari data yang sudah tersedia.',
+        preview: 'finance report',
+        category: 'Finance',
+        price: 'Custom quote',
+        priceNote: 'Essential → Custom',
+        timing: 'By scope',
+        features: ['Rekap pemasukan dan pengeluaran', 'Invoice dan laporan berkala', 'Export untuk kebutuhan finance'],
+        icon: FileText
+    },
+    {
+        id: 'security-solutions',
+        name: 'Security Solutions',
+        description: 'Temukan celah, uji sistem, dan tingkatkan kesiapan tim menghadapi risiko keamanan.',
+        preview: 'security assessment',
+        category: 'Security',
+        price: 'Custom quote',
+        priceNote: 'Assessment → Training',
+        timing: 'By scope',
+        features: ['Vulnerability assessment', 'Penetration testing', 'Security awareness & phishing simulation'],
+        icon: Workflow
     }
 ];
 
 const faqs = [
     [
-        'Belum tahu bagian mana yang bisa diautomasi?',
-        'Tidak masalah. Mulai dari cerita tentang pekerjaan yang paling sering diulang. Dari situ, kita bisa memetakan proses dan menentukan bagian yang paling masuk akal untuk diautomasi.'
+        'Saya belum tahu harus mulai dari mana.',
+        'Ceritakan pekerjaan yang paling sering diulang atau paling banyak memakan waktu. Kami bantu menentukan solusi yang paling masuk akal.'
     ],
     [
-        'Apakah bisa pakai tools yang sudah digunakan?',
-        'Bisa didiskusikan. Integrasi bergantung pada akses API, izin akun, dan kemampuan platform yang Anda gunakan. Kebutuhan ini akan diperiksa saat konsultasi.'
+        'Apakah bisa memakai tools yang sudah kami gunakan?',
+        'Bisa. Kami akan melihat akses, data, dan batasan tools tersebut sebelum menentukan cara integrasinya.'
     ],
     [
-        'Berapa biaya dan lama pengerjaannya?',
-        'Biaya dan waktu pengerjaan mengikuti kompleksitas alur, jumlah integrasi, dan kebutuhan bisnis. Penawaran disepakati setelah konsultasi. Biaya layanan pihak ketiga, jika ada, dijelaskan terpisah.'
+        'Berapa biaya dan waktu pengerjaannya?',
+        'Tergantung scope, jumlah fitur, dan integrasi. Setelah kebutuhan jelas, kami kirimkan scope, timeline, dan penawaran tertulis.'
     ],
     [
-        'Setelah go-live, apakah masih dibantu?',
-        'Tersedia garansi bug dan support after-sales. Cakupan, durasi, dan revisi minor disepakati sesuai paket sebelum pengerjaan dimulai.'
+        'Apakah ada support setelah sistem digunakan?',
+        'Ada. Cakupan support, garansi bug, dan maintenance plan disepakati sebelum pengerjaan dimulai.'
     ]
 ];
 
@@ -100,19 +227,18 @@ function Brand() {
 }
 
 function App() {
-    const [selected, setSelected] = useState([]);
     const [menu, setMenu] = useState(false);
     const [modal, setModal] = useState(null);
+    const [productView, setProductView] = useState('ready');
+    const [productFilter, setProductFilter] = useState('Semua');
     const [service, setService] = useState(0);
-    const [demo, setDemo] = useState(0);
-    const [running, setRunning] = useState(false);
     const [faq, setFaq] = useState(0);
     const [copied, setCopied] = useState(false);
     const [name, setName] = useState('');
     const [need, setNeed] = useState('');
     const [intro, setIntro] = useState(true);
+    const catalogFlip = useRef(null);
 
-    const timers = useRef([]);
     const dialog = useRef(null);
     const trigger = useRef(null);
 
@@ -139,22 +265,6 @@ function App() {
     };
 }, [intro]);
     
-    useEffect(() => {
-        if (!running) return;
-        [1, 2, 3].forEach((n) =>
-            timers.current.push(
-                setTimeout(() => {
-                    setDemo(n);
-                    if (n === 3) setRunning(false);
-                }, n * 950)
-            )
-        );
-        return () => {
-            timers.current.forEach(clearTimeout);
-            timers.current = [];
-        };
-    }, [running]);
-
     useEffect(() => {
         if (modal) {
             trigger.current = document.activeElement;
@@ -187,13 +297,14 @@ function App() {
         return () => observer.disconnect();
     }, []);
 
-    const recommendation = recommend(selected);
-    const brief = makeBrief({ name, plan: modal, selected, notes: need });
+    const brief = makeBrief({ name, plan: modal, selected: [], notes: need });
     const waLink = whatsappUrl(WHATSAPP_NUMBER, brief);
 
-    function toggleNeed(id) {
-        setSelected(prev => prev.includes(id) ? prev.filter(n => n !== id) : [...prev, id]);
-        setCopied(false);
+    function switchProductView(view) {
+        setProductView(view);
+        window.setTimeout(() => {
+            catalogFlip.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
     }
 
     async function copy() {
@@ -229,12 +340,12 @@ function App() {
                 <div className="nav shell">
                     <Brand />
                     <nav className={menu ? 'open' : ''}>
-                        {[['Layanan', '#layanan'], ['Cara kerja', '#cara-kerja'], ['Paket', '#paket'], ['FAQ', '#faq']].map(([t, h]) => (
+                        {[['Solusi', '#layanan'], ['Process', '#cara-kerja'], ['Produk', '#paket'], ['FAQ', '#faq']].map(([t, h]) => (
                             <a href={h} key={h} onClick={() => setMenu(false)}>{t}</a>
                         ))}
                     </nav>
                     <button className="nav-cta" onClick={() => setModal('Konsultasi gratis')}>
-                        Ngobrol dulu <ArrowUpRight size={17} />
+                        Konsultasi <ArrowUpRight size={17} />
                     </button>
                     <button className="menu-btn" aria-label="Buka navigasi" aria-expanded={menu} onClick={() => setMenu(!menu)}>
                         {menu ? <X /> : <Menu />}
@@ -246,26 +357,26 @@ function App() {
                 {/* Hero */}
                 <section className="hero shell" data-reveal>
                     <div className="hero-copy" data-reveal>
-                        <div className="eyebrow"><i /> PARTNER AUTOMASI BISNIS ANDA</div>
+                        <div className="eyebrow"><i /> SOFTWARE & AUTOMATION PARTNER</div>
                         <h1>
-                            Kerjaan berulang?<br />
-                            Biar sistem<br />
-                            yang <em>kerja.</em>
+                            Rapikan proses.<br />
+                            Fokus pada<br />
+                            <em>bisnis Anda.</em>
                         </h1>
                         <p>
-                            Anda fokus mengembangkan bisnis.<br />
-                            Chat, data, dan pekerjaan rutin?<br className="mobile-break" /> <strong>dicodinginAJA.</strong>
+                            Kami membangun website, aplikasi, chatbot, POS,<br />
+                            dan sistem automation sesuai kebutuhan bisnis Anda.
                         </p>
                         <div className="hero-actions">
                             <button className="button orange" onClick={() => setModal('Konsultasi gratis')}>
-                                Konsultasi gratis <ArrowUpRight size={20} />
+                                Mulai konsultasi <ArrowUpRight size={20} />
                             </button>
                             {/* <a className="text-link" href="#demo">
                                 <span className="play"><Play size={13} fill="currentColor" /></span> Lihat cara kerjanya
                             </a> */}
                         </div>
                         <div className="hero-note">
-                            <Check size={14} /> Sesuai alur bisnis Anda 
+                            <Check size={14} /> Clear scope. Practical solutions.
                         </div>
                     </div>
 
@@ -282,15 +393,15 @@ function App() {
                         <div className="float-card message">
                             <span className="app-icon green"><MessageCircle size={20} /></span>
                             <div>
-                                <small>PESAN PELANGGAN</small>
-                                <strong>Sudah dibalas otomatis <CheckCheck size={14} /></strong>
+                                <small>CUSTOMER CHAT</small>
+                                <strong>Balasan lebih cepat <CheckCheck size={14} /></strong>
                             </div>
                         </div>
                         <div className="float-card sheet">
                             <span className="app-icon blue"><FileSpreadsheet size={22} /></span>
                             <div>
-                                <small>GOOGLE SHEETS</small>
-                                <strong>Data masuk. Beres.</strong>
+                                <small>BUSINESS DATA</small>
+                                <strong>Data lebih rapi.</strong>
                             </div>
                             <span className="status-dot" />
                         </div>
@@ -319,8 +430,8 @@ function App() {
                 <section className="section shell" id="layanan" data-reveal>
                     <div className="section-head" data-reveal>
                         <div>
-                            <span className="eyebrow">01 / APA YANG BISA DIBANTU?</span>
-                            <h2>Lebih sedikit manual.<br />Lebih banyak <span className="serif">kemajuan.</span></h2>
+                            <span className="eyebrow">01 / SOLUTIONS</span>
+                            <h2>Solusi untuk proses<br />yang perlu <span className="serif">dirapikan.</span></h2>
                         </div>
                         {/* <p>Dari percakapan pertama sampai laporan terakhir.<br />Kita rapikan prosesnya, satu per satu.</p> */}
                     </div>
@@ -350,81 +461,8 @@ function App() {
                                 {services[service].tags.map(t => <span key={t}>{t}</span>)}
                             </div>
                             <button className="text-link" onClick={() => setModal(services[service].title)}>
-                                Diskusikan kebutuhan ini <ArrowUpRight size={18} />
+                                Bahas solusi ini <ArrowUpRight size={18} />
                             </button>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Demo */}
-                <section className="demo-section" id="demo" data-reveal>
-                    <div className="shell demo-layout">
-                        <div data-reveal>
-                            <span className="eyebrow">COBA LANGSUNG</span>
-                            <h2>Satu pesan masuk.<br />Sisanya, <span className="serif">mengalir.</span></h2>
-                            <p>
-                                Bayangkan pelanggan bertanya, bot menjawab,<br />
-                                dan data tercatat. Tanpa pindah-pindah aplikasi.
-                            </p>
-                            <button
-                                className="button orange"
-                                disabled={running}
-                                onClick={() => { setDemo(0); setRunning(true); }}
-                            >
-                                {running ? 'Alur sedang berjalan…' : demo === 3 ? 'Ulangi simulasi' : 'Jalankan simulasi'}
-                                {demo === 3 ? <RotateCcw size={18} /> : <Play size={16} />}
-                            </button>
-                            <small className="demo-note">Contoh alur ilustratif. Tidak mengirim pesan atau data asli.</small>
-                        </div>
-
-                        <div className="workflow" data-reveal>
-                            <div className="workflow-top">
-                                <span><i className={running ? 'live' : ''} /> Customer inquiry flow</span>
-                                <small>{demo === 3 ? 'SELESAI' : running ? 'RUNNING' : 'READY TO RUN'}</small>
-                            </div>
-                            {[
-                                {
-                                    icon: MessageCircle,
-                                    title: 'Pesan masuk',
-                                    text: '"Halo, boleh minta info layanan?"',
-                                    done: 'Pesan pelanggan diterima'
-                                },
-                                {
-                                    icon: Zap,
-                                    title: 'AI menyiapkan jawaban',
-                                    text: 'Menjawab dari informasi bisnis Anda',
-                                    done: 'Balasan layanan telah disiapkan'
-                                },
-                                {
-                                    icon: FileSpreadsheet,
-                                    title: 'Data tercatat otomatis',
-                                    text: 'Prospek baru masuk ke Google Sheets',
-                                    done: 'Prospek ditambahkan ke spreadsheet'
-                                }
-                            ].map((s, i) => (
-                                <React.Fragment key={s.title}>
-                                    <div className={'flow-node ' + (demo > i ? 'complete' : '')}>
-                                        <span className="node-icon"><s.icon size={21} /></span>
-                                        <div>
-                                            <strong>{s.title}</strong>
-                                            <small>{demo > i ? s.done : s.text}</small>
-                                        </div>
-                                        <span className="node-check">
-                                            {demo > i ? <Check size={16} /> : String(i + 1).padStart(2, '0')}
-                                        </span>
-                                    </div>
-                                    {i < 2 && (
-                                        <div className={'connector ' + (demo > i ? 'complete' : '')}>
-                                            <span />
-                                        </div>
-                                    )}
-                                </React.Fragment>
-                            ))}
-                            <div className="flow-result" aria-live="polite">
-                                {demo === 3
-                                    ? '✓ Beres. Tim Anda bisa fokus ke langkah berikutnya.'
-                                    : 'Tiga langkah. Satu alur yang terhubung.'}
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -433,17 +471,17 @@ function App() {
                 <section className="section shell" id="cara-kerja" data-reveal>
                     <div className="section-head" data-reveal>
                         <div>
-                            <span className="eyebrow">02 / DARI IDE SAMPAI JALAN</span>
-                            <h2>Ngobrol dulu.<br /><span className="serif">Kita urus alurnya.</span></h2>
+                            <span className="eyebrow">02 / PROCESS</span>
+                            <h2>Dari kebutuhan<br /><span className="serif">sampai siap digunakan.</span></h2>
                         </div>
                         {/* <p>Proses jelas dari awal.<br />Anda tahu apa yang dibuat dan cara memakainya.</p> */}
                     </div>
                     <div className="steps" data-reveal>
                         {[
-                            ['01', 'Ceritakan kebutuhan', 'Mulai dari proses yang menyita waktu. Konsultasinya gratis.'],
-                            ['02', 'Kita rancang & bangun', 'Alur disesuaikan dengan bisnis, tools, dan kebutuhan tim Anda.'],
-                            ['03', 'Coba sebelum live', 'Lihat demo, beri masukan, dan pastikan alurnya sesuai.'],
-                            ['04', 'Jalan, lalu didampingi', 'Konfigurasi remote, garansi bug, dan support sesuai kesepakatan.']
+                            ['01', 'Ceritakan prosesnya', 'Kami pelajari pekerjaan, tools, dan target Anda.'],
+                            ['02', 'Susun scope', 'Fitur, integrasi, timeline, dan biaya ditulis dengan jelas.'],
+                            ['03', 'Build & review', 'Solusi dibuat, diuji, lalu direview bersama.'],
+                            ['04', 'Handover & support', 'Anda menerima sistem, dokumentasi, dan support sesuai scope.']
                         ].map(([n, t, d]) => (
                             <div className="step" key={n}>
                                 <span>{n}</span>
@@ -454,142 +492,104 @@ function App() {
                     </div>
                 </section>
 
-                {/* Paket */}
+                {/* Produk & layanan */}
                 <section className="package-section" id="paket" data-reveal>
                     <div className="shell">
-                        <div className="section-head" data-reveal>
+                        <div className="catalog-heading" data-reveal>
                             <div>
-                                <span className="eyebrow">03 / PAKET & KEBUTUHAN</span>
-                                <h2>Mulai dari pekerjaan<br />yang ingin <span className="serif">diringankan.</span></h2>
-                            </div>
-                            {/* <p>Pilih kebutuhan Anda.<br />Kami bantu arahkan ke paket yang sesuai.</p> */}
-                        </div>
-
-                        <div className="recommendation-builder" data-reveal>
-                            <div className="picker-heading">
-                                <div>
-                                    <h3>Apa yang ingin Anda otomatiskan?</h3>
-                                    <p>Boleh pilih lebih dari satu.</p>
-                                </div>
-                                {selected.length > 0 && (
-                                    <button className="reset-needs" onClick={() => { setSelected([]); setCopied(false); }}>
-                                        Hapus pilihan <X size={13} />
-                                    </button>
-                                )}
-                            </div>
-                            <div className="need-options">
-                                {needs.map(n => (
-                                    <label
-                                        className={'need-option ' + (selected.includes(n.id) ? 'checked' : '')}
-                                        key={n.id}
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            checked={selected.includes(n.id)}
-                                            onChange={() => toggleNeed(n.id)}
-                                        />
-                                        <span className="check-box">
-                                            {selected.includes(n.id) && <Check size={13} />}
-                                        </span>
-                                        {n.label}
-                                    </label>
-                                ))}
-                            </div>
-                            <div className="recommendation-result" aria-live="polite" aria-atomic="true">
-                                {recommendation ? (
-                                    <>
-                                        <span className="result-mark"><Check size={18} /></span>
-                                        <div>
-                                            <strong>Rekomendasi awal: {recommendation.name}</strong>
-                                            <p>{recommendation.reason}</p>
-                                        </div>
-                                        <a href={'#plan-' + recommendation.name} className="result-jump">
-                                            Lihat paket <ArrowRight size={16} />
-                                        </a>
-                                    </>
-                                ) : (
-                                    <p>Pilih kebutuhan di atas untuk melihat rekomendasi paket.</p>
-                                )}
+                                <span className="eyebrow">03 / PRODUK & HARGA</span>
+                                <h2>Pilih produk siap pakai,<br />atau bangun alur<br /><span className="serif">khusus</span> bersama kami.</h2>
                             </div>
                         </div>
 
-                        <div className="packages" data-reveal>
-                            {plans.map((p, i) => {
-                                const matched = recommendation?.name === p.name;
-                                return (
-                                    <article
-                                        id={'plan-' + p.name}
-                                        className={'package ' + (matched ? 'recommended' : '')}
-                                        key={p.name}
-                                        aria-label={p.name + (matched ? ' — Cocok untuk Anda' : '')}
-                                    >
-                                        {matched && (
-                                            <div className="recommendation-badge">
-                                                <Check size={14} /> Cocok untuk Anda
-                                            </div>
-                                        )}
-                                        <div className="package-number">0{i + 1} <ArrowUpRight size={24} /></div>
-                                        <h3>{p.name}</h3>
-                                        <p className="plan-lead">{p.lead}</p>
-                                        <div className="quote-price">
-                                            {p.price ? (
-                                                <>
-                                                    <span className="starts-from">Starts from</span>
-                                                    <strong>{p.price}</strong>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <span className="starts-from">Penawaran personal</span>
-                                                    <strong>Sesuai kebutuhan</strong>
-                                                </>
-                                            )}
-                                            <small>{p.for}</small>
-                                        </div>
-                                        <ul>
-                                            {p.features.map(f => (
-                                                <li key={f}><Check size={16} />{f}</li>
+                        <div ref={catalogFlip} className={'catalog-flip ' + (productView === 'custom' ? 'is-flipped' : '')}>
+                            <div className="catalog-flip-inner">
+                                <div className="catalog-face catalog-front" aria-hidden={productView === 'custom'}>
+                                    <div className="catalog-subhead">
+                                        <div><span className="catalog-letter">A</span><h3>Produk siap pakai <small>Ready-to-use</small></h3><span>Harga tetap · langsung dikirim <small>Fixed price · instant delivery</small></span></div>
+                                        <div className="product-filters" role="tablist" aria-label="Filter produk">
+                                            {['Semua', 'Website', 'Mobile', 'POS', 'Chatbot', 'Automation', 'Convera', 'Finance', 'Security'].map(filter => (
+                                                <button key={filter} className={productFilter === filter ? 'active' : ''} onClick={() => setProductFilter(filter)} role="tab" aria-selected={productFilter === filter}>{filter}</button>
                                             ))}
-                                        </ul>
-                                        <p className="plan-timing">{p.note}</p>
-                                        <Pressable
-                                            accessibilityRole="button"
-                                            onPress={() => { setCopied(false); setModal(p.name); }}
-                                            style={({ hovered, pressed }) => ({
-                                                backgroundColor: matched ? '#ef7a35' : 'transparent',
-                                                borderWidth: 1,
-                                                borderColor: matched ? '#ef7a35' : '#a3afb4',
-                                                borderRadius: 6,
-                                                paddingVertical: 15,
-                                                paddingHorizontal: 18,
-                                                opacity: pressed ? .8 : 1,
-                                                transform: hovered ? [{ translateY: -2 }] : [],
-                                                cursor: 'pointer'
-                                            })}
-                                        >
-                                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                                                <Text style={{ fontSize: 13, fontWeight: '600', color: '#252e31' }}>
-                                                    {WHATSAPP_NUMBER ? 'Konsultasi via WhatsApp' : 'Konsultasikan ' + p.name}
-                                                </Text>
-                                                <MessageCircle size={18} color="#252e31" />
-                                            </View>
-                                        </Pressable>
-                                    </article>
-                                );
-                            })}
+                                        </div>
+                                    </div>
+                                    <div className="product-grid">
+                                        {products.filter(product => productFilter === 'Semua' || product.category === productFilter).map((product, index) => {
+                                            const ProductIcon = product.icon;
+                                            return (
+                                                <article className="product-card" key={product.id}>
+                                                    <div className="product-preview">
+                                                        <span>preview: {product.preview}</span>
+                                                        <strong><ProductIcon size={13} />{product.category}</strong>
+                                                    </div>
+                                                    <div className="product-card-body">
+                                                        <div className="product-meta"><span>P-{String(index + 1).padStart(2, '0')}</span><span>{product.timing}</span></div>
+                                                        <h3>{product.name}</h3>
+                                                        <p>{product.description}</p>
+                                                        <ul>{product.features.map(feature => <li key={feature}><Check size={14} />{feature}</li>)}</ul>
+                                                        <div className="product-buy">
+                                                            <div><small>Starts from</small><strong>{product.price}</strong><small>{product.priceNote}</small></div>
+                                                            <button onClick={() => { setCopied(false); setModal(product.name); }}>Beli <ArrowUpRight size={15} /></button>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            );
+                                        })}
+                                    </div>
+                                    <p className="package-disclaimer">Produk siap pakai dikirim setelah pembayaran terkonfirmasi. Biaya platform/API pihak ketiga terpisah jika diperlukan.</p>
+                                    <div className="custom-toggle">
+                                        <p>Butuh alur yang dirancang khusus untuk bisnis Anda?</p>
+                                        <button onClick={() => switchProductView('custom')} aria-label="Lihat proyek custom">
+                                            Custom <span>Proyek khusus</span><ArrowUpRight size={21} />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="catalog-face catalog-back" aria-hidden={productView !== 'custom'}>
+                                    <div className="custom-project">
+                                        <div className="custom-copy">
+                                            <span className="catalog-letter">B &nbsp; Proyek custom <small>Custom project</small></span>
+                                            <h3>Butuh lebih dari template?<br />Kami rancang alurnya dari nol.</h3>
+                                            <p>Untuk proses yang melibatkan banyak sistem, AI, atau aturan bisnis khusus. Cakupan, revisi, dan dukungan disepakati sejak awal.</p>
+                                            <div className="custom-price"><div><small>Starts from · Mulai dari</small><strong>Rp1.500.000</strong></div><div><small>Estimasi · Estimated time</small><strong>5+ hari</strong></div></div>
+                                            <button className="button orange" onClick={() => { setCopied(false); setModal('Proyek custom'); }}>Konsultasi gratis via WhatsApp <ArrowUpRight size={18} /></button>
+                                        </div>
+                                        <div className="custom-topics">
+                                            {[
+                                                ['01', 'Chatbot AI', 'WhatsApp atau Telegram dengan konteks bisnis Anda.'],
+                                                ['02', 'Hubungkan aplikasi', 'Satukan CRM, marketplace, pembayaran, dan tools internal.'],
+                                                ['03', 'Inventori & dokumen', 'Stok, invoice, dan arsip diproses otomatis.'],
+                                                ['04', 'Manajemen tim', 'Tugas, absensi, dan laporan harian dalam satu tempat.']
+                                            ].map(([number, title, description]) => <div key={number}><span>{number}</span><h4>{title}</h4><p>{description}</p></div>)}
+                                        </div>
+                                        <div className="custom-steps">
+                                            {[
+                                                ['1', 'Konsultasi', 'Pemetaan proses dan kebutuhan'],
+                                                ['2', 'Penawaran', 'Cakupan, harga, dan jadwal jelas'],
+                                                ['3', 'Pengerjaan', 'Kami membuat, menguji, dan memperbaiki'],
+                                                ['4', 'Serah terima', 'SOP, pelatihan, dan dukungan']
+                                            ].map(([number, title, description]) => <div key={number}><span>{number}</span><strong>{title}</strong><small>{description}</small></div>)}
+                                        </div>
+                                    </div>
+                                    <div className="custom-toggle custom-toggle-back">
+                                        <p>Ingin melihat produk siap pakai?</p>
+                                        <button onClick={() => switchProductView('ready')} aria-label="Lihat produk siap pakai">
+                                            Products <span>Produk</span><ArrowUpRight size={17} />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p className="package-disclaimer">
-                            Rekomendasi awal berdasarkan pilihan Anda, bukan penawaran final. Harga, biaya platform/API, dan cakupan dikonfirmasi saat konsultasi.
-                        </p>
                     </div>
                 </section>
 
                 {/* FAQ */}
                 <section className="section shell faq-layout" id="faq" data-reveal>
                     <div data-reveal>
-                        <span className="eyebrow">MASIH PENASARAN?</span>
-                        <h2>Bagus.<br /><span className="serif">Tanya AJA.</span></h2>
+                        <span className="eyebrow">FAQ</span>
+                        <h2>Pertanyaan<br /><span className="serif">yang sering muncul.</span></h2>
                         <button className="text-link" onClick={() => setModal('Pertanyaan lain')}>
-                            Punya pertanyaan lain? <ArrowUpRight size={18} />
+                            Bicarakan kebutuhan Anda <ArrowUpRight size={18} />
                         </button>
                     </div>
                     <div className="faqs" data-reveal>
@@ -618,10 +618,10 @@ function App() {
                         <span>Ada yang bisa dibantu?</span>
                     </div>
                     <div>
-                        <span className="eyebrow">KURANGI REPOTNYA. TAMBAH WAKTUNYA.</span>
-                        <h2>Ada yang bisa<br /><span className="serif">diautomasi?</span></h2>
+                        <span className="eyebrow">LET'S TALK</span>
+                        <h2>Punya proses<br />yang perlu <span className="serif">dibangun?</span></h2>
                         <button className="button dark" onClick={() => setModal('Konsultasi gratis')}>
-                            Yuk, ngobrol gratis <ArrowUpRight size={20} />
+                            Mulai konsultasi <ArrowUpRight size={20} />
                         </button>
                     </div>
                 </section>
@@ -643,14 +643,11 @@ function App() {
                     <button className="modal-close" aria-label="Tutup" onClick={() => { setModal(null); setCopied(false); }}>
                         <X />
                     </button>
-                    <span className="eyebrow">MULAI DARI CERITA ANDA</span>
-                    <h2>Ngobrolin <span className="serif">ide.</span></h2>
-                    <p>Pilihan Anda: <strong>{modal}</strong></p>
+                    <span className="eyebrow">CONSULTATION</span>
+                    <h2>Mulai dari <span className="serif">kebutuhan.</span></h2>
+                    <p>Topik: <strong>{modal}</strong></p>
                     <div className="modal-needs">
-                        {selected.length
-                            ? needs.filter(n => selected.includes(n.id)).map(n => <span key={n.id}>{n.label}</span>)
-                            : <span>Belum memilih kebutuhan</span>
-                        }
+                        <span>{modal || 'Konsultasi umum'}</span>
                     </div>
                     <form
                         onSubmit={e => {
@@ -663,7 +660,7 @@ function App() {
                         }}
                     >
                         <label>
-                            Nama Anda
+                            Nama / bisnis
                             <input
                                 value={name}
                                 onChange={e => { setName(e.target.value); setCopied(false); }}
@@ -671,12 +668,12 @@ function App() {
                             />
                         </label>
                         <label>
-                            Apa yang ingin dibuat lebih praktis?
+                            Ceritakan kebutuhan Anda
                             <textarea
                                 rows="3"
                                 value={need}
                                 onChange={e => { setNeed(e.target.value); setCopied(false); }}
-                                placeholder="Tambahkan detail, tools yang digunakan, atau perkiraan volume pekerjaan…"
+                                placeholder="Contoh: ingin membuat website, POS, chatbot, atau laporan otomatis…"
                             />
                         </label>
                         <div className="brief-preview">{brief}</div>
@@ -686,10 +683,10 @@ function App() {
                         </button>
                         <p className="form-note" aria-live="polite">
                             {waLink
-                                ? 'Pilihan kebutuhan otomatis disertakan. Anda dapat meninjau pesan sebelum mengirimnya.'
+                                ? 'Pilihan produk otomatis disertakan. Anda dapat meninjau pesan sebelum mengirimnya.'
                                 : copied
-                                    ? 'Ringkasan dan pilihan kebutuhan tersalin. Belum ada pesan yang dikirim.'
-                                    : 'Kontak WhatsApp sedang disiapkan. Untuk sementara, salin ringkasan kebutuhan Anda.'
+                                    ? 'Ringkasan dan pilihan produk tersalin. Belum ada pesan yang dikirim.'
+                                    : 'Kontak WhatsApp sedang disiapkan. Untuk sementara, salin ringkasan konsultasi Anda.'
                             }
                         </p>
                     </form>

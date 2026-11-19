@@ -26,7 +26,7 @@ export function recommend(ids) {
 export function makeBrief({ name, plan, selected, notes }) {
   const list = needs.filter(n => selected.includes(n.id)).map(n => `• ${n.label}`).join('\n');
   const rec = recommend(selected);
-  return `Halo dicodinginAJA! Saya ingin konsultasi automasi.\n\nNama / bisnis: ${name || 'Belum diisi'}\nPaket yang diminati: ${plan || rec?.name || 'Belum menentukan'}\nRekomendasi website: ${rec?.name || 'Belum ada'}\n\nKebutuhan:\n${list || '• Ingin diskusi terlebih dahulu'}\n\nCatatan: ${notes || 'Mohon bantu jelaskan alur dan estimasi biayanya.'}`;
+  return `Halo dicodinginAJA! Saya ingin konsultasi automasi.\n\nNama / bisnis: ${name || 'Belum diisi'}\nProduk / layanan yang diminati: ${plan || rec?.name || 'Belum menentukan'}\n\nKebutuhan:\n${list || '• Ingin diskusi terlebih dahulu'}\n\nCatatan: ${notes || 'Mohon bantu jelaskan cara kerja dan estimasi biayanya.'}`;
 }
 
 export function whatsappUrl(number, message) {
