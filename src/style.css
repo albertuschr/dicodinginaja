@@ -390,36 +390,110 @@ h2 {
 /* ── Services ── */
 .service-grid {
   display: grid;
-  grid-template-columns: 1.07fr 1fr;
-  gap: 75px;
-  border-bottom: 1px solid #d1d9da;
-  padding-bottom: 20px;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 22px;
+  align-items: stretch;
 }
+.service-tabs { display: grid; gap: 12px; }
 .service-tabs button {
   display: flex;
   align-items: center;
   text-align: left;
-  gap: 24px;
+  gap: 14px;
   width: 100%;
-  padding: 31px 18px 31px 0;
-  background: none;
-  border: 0;
-  border-top: 1px solid #cdd5d6;
+  min-height: 104px;
+  padding: 17px 18px;
+  background: #f1f5f4;
+  border: 1px solid #d4dfdf;
+  border-radius: 15px;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
 }
-.service-tabs button span { font-size: 10px; color: #839093; }
-.service-tabs b { font-size: 17px; font-weight: 550; flex: 1; }
+.service-tabs button:hover { transform: translateX(5px); border-color: #ef9a68; }
+.service-index { align-self: flex-start; font-size: 10px; color: #839093; }
+.service-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: #dce9eb;
+  color: #c05c24;
+}
+.service-tab-copy { display: flex; flex: 1; flex-direction: column; gap: 7px; }
+.service-tabs b { font-size: 16px; font-weight: 650; }
+.service-tab-copy small { color: #71838a; font-size: 10px; }
 .service-tabs button svg { transition: transform .3s; }
-.service-tabs button.active { color: #c05c24; }
-.service-tabs button.active svg { transform: rotate(45deg); }
-.service-detail { padding: 8px 0 26px; }
-.service-detail > svg { color: #da6d31; }
-.service-detail h3 { font-size: 23px; font-weight: 550; margin: 18px 0 12px; }
-.service-detail p {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #66777b;
-  max-width: 440px;
+.service-tabs button.active {
+  color: #f5f8f6;
+  background: #26373d;
+  border-color: #26373d;
+  box-shadow: 0 14px 28px #26373d1f;
 }
+.service-tabs button.active .service-index,
+.service-tabs button.active .service-tab-copy small { color: #b8cbd0; }
+.service-tabs button.active .service-icon { background: #ef7a35; color: #26373d; }
+.service-tabs button.active svg { transform: rotate(45deg); }
+.service-detail {
+  position: relative;
+  display: flex;
+  min-height: 348px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 34px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #26373d, #17262c);
+  color: #f4f7f5;
+  box-shadow: 0 20px 40px #26373d1c;
+}
+.service-detail::after {
+  position: absolute;
+  right: -80px;
+  bottom: -100px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid #ef7a354d;
+  border-radius: 50%;
+  box-shadow: 0 0 0 24px #ef7a3512, 0 0 0 48px #ef7a3508;
+  content: '';
+}
+.service-detail-top { display: flex; align-items: center; justify-content: space-between; }
+.service-detail-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 16px;
+  background: #ef7a35;
+  color: #26373d;
+}
+.service-kicker { color: #a9bdc4; font-size: 10px; letter-spacing: 1.3px; }
+.service-detail h3 { position: relative; z-index: 1; max-width: 420px; margin: auto 0 12px; font-size: 29px; font-weight: 600; letter-spacing: -.8px; }
+.service-detail p {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 0 0 26px;
+  color: #b6c8ce;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.service-cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 10px;
+  border: 1px solid #ef7a35;
+  border-radius: 7px;
+  background: #ef7a35;
+  padding: 11px 15px;
+  color: #26343a;
+  font-size: 12px;
+  font-weight: 650;
+}
+.service-cta:hover { background: #f28a4e; }
 .tags {
   display: flex;
   gap: 8px;
@@ -886,13 +960,14 @@ input, textarea {
   h2,
   .demo-section h2 { font-size: 35px; letter-spacing: -1.7px; }
   .section-head > p { font-size: 12px; margin-top: 20px; }
-  .service-grid    { grid-template-columns: 1fr; gap: 27px; }
-  .service-tabs button { padding: 22px 0; }
-  .service-tabs b      { font-size: 15px; }
-  .service-tabs button span { font-size: 9px; }
-  .service-detail  { background: #eef3f3; padding: 25px; border-radius: 6px; }
-  .service-detail h3 { font-size: 21px; }
-  .service-detail p  { font-size: 13px; }
+  .service-grid { grid-template-columns: 1fr; gap: 15px; }
+  .service-tabs button { min-height: 85px; padding: 14px; }
+  .service-tabs b { font-size: 14px; }
+  .service-icon { width: 36px; height: 36px; flex-basis: 36px; }
+  .service-tab-copy small { font-size: 9px; }
+  .service-detail { min-height: 300px; padding: 25px; border-radius: 16px; }
+  .service-detail h3 { font-size: 25px; }
+  .service-detail p { font-size: 12px; }
   .demo-section    { padding: 60px 0; }
   .demo-layout     { grid-template-columns: 1fr; gap: 35px; }
   .demo-section p  { font-size: 12px; }
@@ -1589,10 +1664,10 @@ h1 em           { font-family: inherit; font-style: normal; font-weight: 650; le
   color: #b6c8ce;
 }
 .custom-toggle-back button {
-  border-color: #8199a2;
-  background: transparent;
+  border-color: #ef7a35;
+  background: #ef7a35;
   padding: 10px 16px;
-  color: #f4f7f5;
+  color: #26343a;
   font-size: 12px;
   box-shadow: none;
 }
@@ -1619,6 +1694,11 @@ h1 em           { font-family: inherit; font-style: normal; font-weight: 650; le
 .custom-toggle button:hover {
   border-color: #ef7a35;
   color: #b95724;
+}
+.custom-toggle-back button:hover {
+  border-color: #f28a4e;
+  background: #f28a4e;
+  color: #1e2d32;
 }
 .custom-project {
   display: grid;

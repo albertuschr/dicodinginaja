@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
     ArrowUpRight, Plus, Minus, Check, MessageCircle, Send,
-    Workflow, FileSpreadsheet, Boxes, FileText, X, Menu, Copy, CheckCheck
+    Workflow, FileSpreadsheet, Boxes, FileText, X, Menu, CheckCheck
 } from 'lucide-react';
 import './style.css';
-import { makeBrief, whatsappUrl, WHATSAPP_NUMBER } from './recommendation.js';
+import { whatsappUrl, WHATSAPP_NUMBER } from './recommendation.js';
 
 const services = [
     {
@@ -52,6 +52,18 @@ const products = [
         timing: '1–3 hari',
         features: ['Hingga 10 menu & sub-menu', 'Instalasi & uji coba', 'Panduan edit isi menu'],
         icon: MessageCircle
+    },
+    {
+        id: 'convera',
+        name: 'Convera Ads Intelligence',
+        description: 'Hubungkan data iklan dengan penjualan untuk melihat channel yang benar-benar menghasilkan.',
+        preview: 'ads to sales',
+        category: 'Convera',
+        price: 'Rp150.000',
+        priceNote: 'Essential → Enterprise',
+        timing: 'By scope',
+        features: ['Tracking campaign dan conversion', 'Dashboard performa iklan', 'Data siap dipakai untuk keputusan'],
+        icon: FileSpreadsheet
     },
     {
         id: 'telegram-notification',
@@ -149,18 +161,7 @@ const products = [
         features: ['FAQ dan katalog otomatis', 'WhatsApp, e-commerce, dan website', 'Private server tersedia'],
         icon: MessageCircle
     },
-    {
-        id: 'convera',
-        name: 'Convera Ads Intelligence',
-        description: 'Hubungkan data iklan dengan penjualan untuk melihat channel yang benar-benar menghasilkan.',
-        preview: 'ads to sales',
-        category: 'Convera',
-        price: 'Custom quote',
-        priceNote: 'Essential → Enterprise',
-        timing: 'By scope',
-        features: ['Tracking campaign dan conversion', 'Dashboard performa iklan', 'Data siap dipakai untuk keputusan'],
-        icon: FileSpreadsheet
-    },
+    
     {
         id: 'sheets-automation',
         name: 'Sheets Automation',
@@ -228,19 +229,12 @@ function Brand() {
 
 function App() {
     const [menu, setMenu] = useState(false);
-    const [modal, setModal] = useState(null);
     const [productView, setProductView] = useState('ready');
     const [productFilter, setProductFilter] = useState('Semua');
     const [service, setService] = useState(0);
     const [faq, setFaq] = useState(0);
-    const [copied, setCopied] = useState(false);
-    const [name, setName] = useState('');
-    const [need, setNeed] = useState('');
     const [intro, setIntro] = useState(true);
     const catalogFlip = useRef(null);
-
-    const dialog = useRef(null);
-    const trigger = useRef(null);
 
     // useEffect(() => {
     //     const t = setTimeout(() => setIntro(false), 1500);
@@ -266,16 +260,6 @@ function App() {
 }, [intro]);
     
     useEffect(() => {
-        if (modal) {
-            trigger.current = document.activeElement;
-            dialog.current?.showModal();
-        } else if (dialog.current?.open) {
-            dialog.current.close();
-            trigger.current?.focus();
-        }
-    }, [modal]);
-
-    useEffect(() => {
         const revealItems = document.querySelectorAll('[data-reveal]');
         if (!revealItems.length) return;
 
@@ -297,24 +281,22 @@ function App() {
         return () => observer.disconnect();
     }, []);
 
-    const brief = makeBrief({ name, plan: modal, selected: [], notes: need });
-    const waLink = whatsappUrl(WHATSAPP_NUMBER, brief);
+    function openWhatsApp(topic, type = 'general') {
+        const messages = {
+            product: `Halo dicodinginAJA! Saya tertarik dengan produk "${topic}". Mohon info detail fitur, harga, dan cara mendapatkannya.`,
+            service: `Halo dicodinginAJA! Saya ingin membahas solusi "${topic}" untuk bisnis saya. Mohon bantu jelaskan langkah awal dan estimasinya.`,
+            question: `Halo dicodinginAJA! Saya ingin bertanya: "${topic}"`,
+            general: `Halo dicodinginAJA! Saya ingin konsultasi tentang kebutuhan website, aplikasi, chatbot, atau automation untuk bisnis saya.`
+        };
+        const link = whatsappUrl(WHATSAPP_NUMBER, messages[type] || messages.general);
+        if (link) window.open(link, '_blank', 'noopener,noreferrer');
+    }
 
     function switchProductView(view) {
         setProductView(view);
         window.setTimeout(() => {
             catalogFlip.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 80);
-    }
-
-    async function copy() {
-        try {
-            await navigator.clipboard.writeText(brief);
-            setCopied(true);
-        } catch {
-            setCopied(false);
-            alert('Salin ringkasan secara manual dari kotak di bawah.');
-        }
     }
 
     const Icon = services[service].icon;
@@ -344,7 +326,7 @@ function App() {
                             <a href={h} key={h} onClick={() => setMenu(false)}>{t}</a>
                         ))}
                     </nav>
-                    <button className="nav-cta" onClick={() => setModal('Konsultasi gratis')}>
+                    <button className="nav-cta" onClick={() => openWhatsApp()}>
                         Konsultasi <ArrowUpRight size={17} />
                     </button>
                     <button className="menu-btn" aria-label="Buka navigasi" aria-expanded={menu} onClick={() => setMenu(!menu)}>
@@ -368,7 +350,7 @@ function App() {
                             dan sistem automation sesuai kebutuhan bisnis Anda.
                         </p>
                         <div className="hero-actions">
-                            <button className="button orange" onClick={() => setModal('Konsultasi gratis')}>
+                            <button className="button orange" onClick={() => openWhatsApp()}>
                                 Mulai konsultasi <ArrowUpRight size={20} />
                             </button>
                             {/* <a className="text-link" href="#demo">
@@ -447,21 +429,25 @@ function App() {
                                     className={service === i ? 'active' : ''}
                                     onClick={() => setService(i)}
                                 >
-                                    <span>0{i + 1}</span>
-                                    <b>{s.title}</b>
-                                    <ArrowUpRight size={22} />
+                                    <span className="service-index">0{i + 1}</span>
+                                    <span className="service-icon"><s.icon size={22} strokeWidth={1.6} /></span>
+                                    <span className="service-tab-copy">
+                                        <b>{s.title}</b>
+                                        <small>{s.tags.join(' · ')}</small>
+                                    </span>
+                                    <ArrowUpRight size={18} />
                                 </button>
                             ))}
                         </div>
                         <div className="service-detail" role="tabpanel" id="service-panel" aria-labelledby={'tab-' + service}>
-                            <Icon size={38} strokeWidth={1.3} />
+                            <div className="service-detail-top">
+                                <span className="service-detail-icon"><Icon size={29} strokeWidth={1.5} /></span>
+                                <span className="service-kicker">SOLUSI 0{service + 1}</span>
+                            </div>
                             <h3>{services[service].title}</h3>
                             <p>{services[service].desc}</p>
-                            <div className="tags">
-                                {services[service].tags.map(t => <span key={t}>{t}</span>)}
-                            </div>
-                            <button className="text-link" onClick={() => setModal(services[service].title)}>
-                                Bahas solusi ini <ArrowUpRight size={18} />
+                            <button className="service-cta" onClick={() => openWhatsApp(services[service].title, 'service')}>
+                                Mulai dari sini <ArrowUpRight size={17} />
                             </button>
                         </div>
                     </div>
@@ -506,7 +492,7 @@ function App() {
                             <div className="catalog-flip-inner">
                                 <div className="catalog-face catalog-front" aria-hidden={productView === 'custom'}>
                                     <div className="catalog-subhead">
-                                        <div><span className="catalog-letter">A</span><h3>Produk siap pakai <small>Ready-to-use</small></h3><span>Harga tetap · langsung dikirim <small>Fixed price · instant delivery</small></span></div>
+                                        {/* <div><span className="catalog-letter">A</span><h3>Produk siap pakai <small>Ready-to-use</small></h3><span>Harga tetap · langsung dikirim <small>Fixed price · instant delivery</small></span></div> */}
                                         <div className="product-filters" role="tablist" aria-label="Filter produk">
                                             {['Semua', 'Website', 'Mobile', 'POS', 'Chatbot', 'Automation', 'Convera', 'Finance', 'Security'].map(filter => (
                                                 <button key={filter} className={productFilter === filter ? 'active' : ''} onClick={() => setProductFilter(filter)} role="tab" aria-selected={productFilter === filter}>{filter}</button>
@@ -523,24 +509,24 @@ function App() {
                                                         <strong><ProductIcon size={13} />{product.category}</strong>
                                                     </div>
                                                     <div className="product-card-body">
-                                                        <div className="product-meta"><span>P-{String(index + 1).padStart(2, '0')}</span><span>{product.timing}</span></div>
+                                                        <div className="product-meta"><span>{product.timing}</span></div>
                                                         <h3>{product.name}</h3>
                                                         <p>{product.description}</p>
                                                         <ul>{product.features.map(feature => <li key={feature}><Check size={14} />{feature}</li>)}</ul>
                                                         <div className="product-buy">
                                                             <div><small>Starts from</small><strong>{product.price}</strong><small>{product.priceNote}</small></div>
-                                                            <button onClick={() => { setCopied(false); setModal(product.name); }}>Beli <ArrowUpRight size={15} /></button>
+                                                            <button onClick={() => openWhatsApp(product.name, 'product')}>Beli <ArrowUpRight size={15} /></button>
                                                         </div>
                                                     </div>
                                                 </article>
                                             );
                                         })}
                                     </div>
-                                    <p className="package-disclaimer">Produk siap pakai dikirim setelah pembayaran terkonfirmasi. Biaya platform/API pihak ketiga terpisah jika diperlukan.</p>
+                                    {/* <p className="package-disclaimer">Produk siap pakai dikirim setelah pembayaran terkonfirmasi. Biaya platform/API pihak ketiga terpisah jika diperlukan.</p> */}
                                     <div className="custom-toggle">
                                         <p>Butuh alur yang dirancang khusus untuk bisnis Anda?</p>
                                         <button onClick={() => switchProductView('custom')} aria-label="Lihat proyek custom">
-                                            Custom <span>Proyek khusus</span><ArrowUpRight size={21} />
+                                            Custom  <ArrowUpRight size={21} />
                                         </button>
                                     </div>
                                 </div>
@@ -552,7 +538,7 @@ function App() {
                                             <h3>Butuh lebih dari template?<br />Kami rancang alurnya dari nol.</h3>
                                             <p>Untuk proses yang melibatkan banyak sistem, AI, atau aturan bisnis khusus. Cakupan, revisi, dan dukungan disepakati sejak awal.</p>
                                             <div className="custom-price"><div><small>Starts from · Mulai dari</small><strong>Rp1.500.000</strong></div><div><small>Estimasi · Estimated time</small><strong>5+ hari</strong></div></div>
-                                            <button className="button orange" onClick={() => { setCopied(false); setModal('Proyek custom'); }}>Konsultasi gratis via WhatsApp <ArrowUpRight size={18} /></button>
+                                            <button className="button orange" onClick={() => openWhatsApp('Proyek custom', 'service')}>Konsultasi gratis via WhatsApp <ArrowUpRight size={18} /></button>
                                         </div>
                                         <div className="custom-topics">
                                             {[
@@ -572,9 +558,9 @@ function App() {
                                         </div>
                                     </div>
                                     <div className="custom-toggle custom-toggle-back">
-                                        <p>Ingin melihat produk siap pakai?</p>
+                                        {/* <p>Ingin melihat produk siap pakai?</p> */}
                                         <button onClick={() => switchProductView('ready')} aria-label="Lihat produk siap pakai">
-                                            Products <span>Produk</span><ArrowUpRight size={17} />
+                                            Products <ArrowUpRight size={17} />
                                         </button>
                                     </div>
                                 </div>
@@ -588,7 +574,7 @@ function App() {
                     <div data-reveal>
                         <span className="eyebrow">FAQ</span>
                         <h2>Pertanyaan<br /><span className="serif">yang sering muncul.</span></h2>
-                        <button className="text-link" onClick={() => setModal('Pertanyaan lain')}>
+                        <button className="text-link" onClick={() => openWhatsApp('Pertanyaan lain', 'question')}>
                             Bicarakan kebutuhan Anda <ArrowUpRight size={18} />
                         </button>
                     </div>
@@ -605,6 +591,9 @@ function App() {
                                 </button>
                                 <div id={'faq-' + i} hidden={faq !== i}>
                                     <p>{a}</p>
+                                    <button className="text-link faq-cta" onClick={() => openWhatsApp(q, 'question')}>
+                                        Bahas pertanyaan ini <ArrowUpRight size={16} />
+                                    </button>
                                 </div>
                             </div>
                         ))}
@@ -620,7 +609,7 @@ function App() {
                     <div>
                         <span className="eyebrow">LET'S TALK</span>
                         <h2>Punya proses<br />yang perlu <span className="serif">dibangun?</span></h2>
-                        <button className="button dark" onClick={() => setModal('Konsultasi gratis')}>
+                        <button className="button dark" onClick={() => openWhatsApp()}>
                             Mulai konsultasi <ArrowUpRight size={20} />
                         </button>
                     </div>
@@ -634,64 +623,6 @@ function App() {
                 <a href="#">Kembali ke atas ↑</a>
             </footer>
 
-            <dialog
-                ref={dialog}
-                onCancel={() => setModal(null)}
-                onClick={e => { if (e.target === dialog.current) setModal(null); }}
-            >
-                <div className="modal-inner">
-                    <button className="modal-close" aria-label="Tutup" onClick={() => { setModal(null); setCopied(false); }}>
-                        <X />
-                    </button>
-                    <span className="eyebrow">CONSULTATION</span>
-                    <h2>Mulai dari <span className="serif">kebutuhan.</span></h2>
-                    <p>Topik: <strong>{modal}</strong></p>
-                    <div className="modal-needs">
-                        <span>{modal || 'Konsultasi umum'}</span>
-                    </div>
-                    <form
-                        onSubmit={e => {
-                            e.preventDefault();
-                            if (waLink) {
-                                window.open(waLink, '_blank', 'noopener,noreferrer');
-                            } else {
-                                copy();
-                            }
-                        }}
-                    >
-                        <label>
-                            Nama / bisnis
-                            <input
-                                value={name}
-                                onChange={e => { setName(e.target.value); setCopied(false); }}
-                                placeholder="Nama atau nama bisnis"
-                            />
-                        </label>
-                        <label>
-                            Ceritakan kebutuhan Anda
-                            <textarea
-                                rows="3"
-                                value={need}
-                                onChange={e => { setNeed(e.target.value); setCopied(false); }}
-                                placeholder="Contoh: ingin membuat website, POS, chatbot, atau laporan otomatis…"
-                            />
-                        </label>
-                        <div className="brief-preview">{brief}</div>
-                        <button className="button orange" type="submit">
-                            {waLink ? 'Lanjut ke WhatsApp' : copied ? 'Ringkasan tersalin' : 'Salin ringkasan konsultasi'}
-                            {waLink ? <MessageCircle size={18} /> : copied ? <Check size={18} /> : <Copy size={18} />}
-                        </button>
-                        <p className="form-note" aria-live="polite">
-                            {waLink
-                                ? 'Pilihan produk otomatis disertakan. Anda dapat meninjau pesan sebelum mengirimnya.'
-                                : copied
-                                    ? 'Ringkasan dan pilihan produk tersalin. Belum ada pesan yang dikirim.'
-                                    : 'Kontak WhatsApp sedang disiapkan. Untuk sementara, salin ringkasan konsultasi Anda.'
-                            }
-                        </p>
-                    </form>
-                </div>
-            </dialog>
         </>
     );
 }
