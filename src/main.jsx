@@ -429,7 +429,7 @@ function App() {
                                     className={service === i ? 'active' : ''}
                                     onClick={() => setService(i)}
                                 >
-                                    <span className="service-index">0{i + 1}</span>
+                                    {/* <span className="service-index">0{i + 1}</span> */}
                                     <span className="service-icon"><s.icon size={22} strokeWidth={1.6} /></span>
                                     <span className="service-tab-copy">
                                         <b>{s.title}</b>
@@ -442,7 +442,7 @@ function App() {
                         <div className="service-detail" role="tabpanel" id="service-panel" aria-labelledby={'tab-' + service}>
                             <div className="service-detail-top">
                                 <span className="service-detail-icon"><Icon size={29} strokeWidth={1.5} /></span>
-                                <span className="service-kicker">SOLUSI 0{service + 1}</span>
+                                {/* <span className="service-kicker">SOLUSI 0{service + 1}</span> */}
                             </div>
                             <h3>{services[service].title}</h3>
                             <p>{services[service].desc}</p>

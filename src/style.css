@@ -425,13 +425,13 @@ h2 {
 .service-tab-copy small { color: #71838a; font-size: 10px; }
 .service-tabs button svg { transition: transform .3s; }
 .service-tabs button.active {
-  color: #f5f8f6;
-  background: #26373d;
-  border-color: #26373d;
-  box-shadow: 0 14px 28px #26373d1f;
+  color: #293236;
+  background: #d8e5eb;
+  border-color: #b7cbd3;
+  box-shadow: 0 14px 28px #8aa8b31f;
 }
 .service-tabs button.active .service-index,
-.service-tabs button.active .service-tab-copy small { color: #b8cbd0; }
+.service-tabs button.active .service-tab-copy small { color: #60737b; }
 .service-tabs button.active .service-icon { background: #ef7a35; color: #26373d; }
 .service-tabs button.active svg { transform: rotate(45deg); }
 .service-detail {
@@ -442,9 +442,9 @@ h2 {
   overflow: hidden;
   padding: 34px;
   border-radius: 20px;
-  background: linear-gradient(145deg, #26373d, #17262c);
-  color: #f4f7f5;
-  box-shadow: 0 20px 40px #26373d1c;
+  background: linear-gradient(145deg, #e4ecef, #d8e5eb);
+  color: #293236;
+  box-shadow: 0 20px 40px #8aa8b31f;
 }
 .service-detail::after {
   position: absolute;
@@ -452,9 +452,9 @@ h2 {
   bottom: -100px;
   width: 260px;
   height: 260px;
-  border: 1px solid #ef7a354d;
+  border: 1px solid #ef7a3566;
   border-radius: 50%;
-  box-shadow: 0 0 0 24px #ef7a3512, 0 0 0 48px #ef7a3508;
+  box-shadow: 0 0 0 24px #ef7a3518, 0 0 0 48px #ef7a350b;
   content: '';
 }
 .service-detail-top { display: flex; align-items: center; justify-content: space-between; }
@@ -467,14 +467,14 @@ h2 {
   background: #ef7a35;
   color: #26373d;
 }
-.service-kicker { color: #a9bdc4; font-size: 10px; letter-spacing: 1.3px; }
+.service-kicker { color: #60737b; font-size: 10px; letter-spacing: 1.3px; }
 .service-detail h3 { position: relative; z-index: 1; max-width: 420px; margin: auto 0 12px; font-size: 29px; font-weight: 600; letter-spacing: -.8px; }
 .service-detail p {
   position: relative;
   z-index: 1;
   max-width: 420px;
   margin: 0 0 26px;
-  color: #b6c8ce;
+  color: #60737b;
   font-size: 14px;
   line-height: 1.65;
 }
