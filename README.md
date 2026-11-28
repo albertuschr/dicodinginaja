@@ -6,6 +6,12 @@ Responsive landing page built with React, Vite, CSS, and React Native Web (packa
 
 Run `npm install`, then `npx vite`. Production: `npm run build`.
 
+## Chatbot webhook
+
+Copy `.env.example` to `.env.local` and set `VITE_CHATBOT_WEBHOOK_URL` to the full production webhook URL, for example `https://your-n8n-domain/webhook/chatbot-dicodinginaja`. The URL must use the published production webhook; restart the dev server or rebuild/redeploy after changing it.
+
+The widget sends `{ action, message, sessionId }` as JSON and expects `{ reply }` in response. FAQ buttons use the `faq_layanan`, `faq_harga`, `faq_proses`, and `faq_konsultasi` actions; typed messages use `chat`. The webhook must allow browser requests from `dicodinginaja.my.id` and `www.dicodinginaja.my.id`. The URL is included in the public frontend bundle, so do not put credentials or secrets in it.
+
 ## Content to finalize
 
 - The pricing section presents six plain-language ready-to-use products with filters for n8n, WhatsApp, Telegram, and Google Sheets, plus a separate custom-project view.

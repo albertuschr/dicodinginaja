@@ -9,6 +9,7 @@ import Testimoni from './sections/Testimoni.jsx';
 import Faq from './sections/Faq.jsx';
 import Cta from './sections/Cta.jsx';
 import Footer from './sections/Footer.jsx';
+import ChatWidget from './components/ChatWidget.jsx';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <Faq />
       <Cta />
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
