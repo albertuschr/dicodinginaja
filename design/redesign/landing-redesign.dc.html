@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>dicodinginAJA — Biar Sistem yang Kerja</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#D9601A}a:hover{color:#B24A0F}
+*{box-sizing:border-box}
+button{font-family:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #EF7A30;outline-offset:3px}
+@media (max-width:900px){.navlinks{display:none !important}}
+.herobox{margin-left:-80px}
+.spancta{grid-column:span 2}
+.kimg{margin-top:-170px}
+.kpanel{margin-top:200px}
+@media (max-width:900px){.kimg{margin-top:0;height:240px !important}.kpanel{margin-top:48px;border-radius:56px 56px 0 0 !important;padding-top:32px}}
+.navcta{white-space:nowrap}
+@media (max-width:560px){.navcta{padding:8px 14px !important;font-size:14px !important}.heroimg{min-height:380px !important}}
+@media (max-width:700px){.spancta{grid-column:auto}}
+@media (max-width:980px){.herobox{margin-left:0;margin-top:-48px;padding:0 12px 24px !important}}
+@media (max-width:560px){.hide-sm{display:none !important}.heroin{padding:32px 24px !important}}
+@keyframes lineIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.heroring{animation:spinr 40s linear infinite}
+@media (max-width:560px){.herotag{font-size:38px !important}}
+.hb1{animation:popIn 0.4s ease both}.hb2{animation:popIn 0.4s ease 0.9s both}.hb3{animation:popIn 0.4s ease 1.6s both}
+@media (max-width:980px){.heroart{height:520px !important}}
+@media (max-width:560px){.heroart{height:480px !important}.heromascot{height:340px !important}.heromwrap{left:-24px !important}.herocard{width:230px !important;top:0 !important}}
+.heroline{animation:lineIn 0.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.55)}100%{box-shadow:0 0 0 22px rgba(37,211,102,0)}}
+@keyframes popIn{0%{opacity:0;transform:translateY(16px) scale(0.92)}100%{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes heroIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes grow{from{width:0}to{width:100%}}
+.float{animation:floaty 4s ease-in-out infinite}
+.float2{animation:floaty 4.6s ease-in-out 0.6s infinite}
+.float3{animation:floaty 5.2s ease-in-out 1.2s infinite}
+.wiggle{animation:wiggle 2.6s ease-in-out infinite;transform-origin:50% 90%}
+.marquee{animation:marquee 28s linear infinite}
+.marquee-wrap:hover .marquee{animation-play-state:paused}
+.pulse{animation:pulseRing 1.8s ease-out infinite}
+.chip{animation:popIn 0.5s cubic-bezier(.2,.9,.3,1.3) both}
+.heroin{animation:heroIn 0.9s cubic-bezier(.2,.8,.2,1) both}
+.bar{animation:grow 5s linear both}
+.zoomcard img{transition:transform 0.7s cubic-bezier(.2,.8,.2,1)}
+.zoomcard:hover img{transform:scale(1.07)}
+.lift{transition:transform 0.3s cubic-bezier(.2,.8,.2,1),box-shadow 0.3s}
+.lift:hover{transform:translateY(-10px);box-shadow:0 24px 40px -18px rgba(38,44,49,0.45)}
+.btn{transition:transform 0.2s,filter 0.2s}
+.btn:hover{transform:translateY(-2px) scale(1.03);filter:brightness(1.05)}
+.n8ngrid{background-color:#2B2E33;background-image:radial-gradient(#464A50 1.2px,transparent 1.2px);background-size:22px 22px}
+@keyframes dash{to{stroke-dashoffset:-24}}
+.flow{stroke-dasharray:8 6;animation:dash 0.6s linear infinite}
+@keyframes spinr{to{transform:rotate(360deg)}}
+.spin{animation:spinr 0.8s linear infinite}
+@keyframes blink{0%,80%,100%{opacity:0.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.dot1{animation:blink 1.2s infinite}.dot2{animation:blink 1.2s 0.2s infinite}.dot3{animation:blink 1.2s 0.4s infinite}
+@keyframes livep{0%{box-shadow:0 0 0 0 rgba(63,185,80,0.6)}100%{box-shadow:0 0 0 10px rgba(63,185,80,0)}}
+.livedot{animation:livep 1.4s ease-out infinite}
+.blurname{filter:blur(5px);user-select:none}
+.ttrack{--step:calc(50% + 12px);transition:transform 0.7s cubic-bezier(.2,.8,.2,1)}
+.tcard{flex:0 0 calc(50% - 12px)}
+@media (max-width:760px){.ttrack{--step:calc(100% + 24px)}.tcard{flex:0 0 100%}}
+@supports (animation-timeline: view()){
+.reveal{animation:fadeUp linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<div style="font-family:'Lexend',system-ui,sans-serif;color:#262C31;background:#FFFFFF;font-size:17px;line-height:1.55;width:100%">
+
+<!-- NAV -->
+<header style="position:sticky;top:0;z-index:20;background:#262C31">
+<div style="max-width:1280px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+<a href="#beranda" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+<span style="width:40px;height:40px;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><img src="/assets/v2/logo.webp" alt="" style="width:30px;height:30px"></span>
+<span style="font-weight:700;font-size:21px;color:#FFFFFF;letter-spacing:-0.02em">dicodingin<span style="color:#EF7A30">AJA</span></span>
+</a>
+<nav class="navlinks" aria-label="Menu utama" style="display:flex;gap:26px;font-weight:600;font-size:16px">
+<a href="#beranda" style="color:#FFFFFF;text-decoration:none">Beranda</a>
+<a href="#layanan" style="color:#FFFFFF;text-decoration:none">Layanan</a>
+<a href="#demo" style="color:#FFFFFF;text-decoration:none">Coba bot</a>
+<a href="#project" style="color:#FFFFFF;text-decoration:none">Project</a>
+<a href="#bantuan" style="color:#FFFFFF;text-decoration:none">Bantuan</a>
+</nav>
+<a href="{{waLink}}" target="_blank" rel="noopener" class="btn navcta" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 22px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:16px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="color:#262C31;flex:none"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>Chat kami</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="beranda" style="background:#262C31;padding:12px 0 0;overflow:hidden">
+<div style="max-width:1240px;margin:0 auto;padding:0 28px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px;min-height:620px">
+<div class="heroin" style="flex:1.6 1 600px;min-width:0;color:#FFFFFF;padding:40px 0">
+<p style="margin:0;display:inline-flex;align-items:center;gap:10px;background:#30373D;border:1px solid #3A4249;padding:6px 14px 6px 6px;border-radius:999px;font-size:14px;font-weight:600"><span style="width:28px;height:28px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><img src="/assets/v2/logo.webp" alt="" style="width:20px;height:20px"></span>Jasa automasi buat usaha kecil</p>
+<h1 aria-live="polite" class="herotag" style="margin:26px 0 0;font-size:clamp(44px,5.7vw,82px);line-height:1.0;letter-spacing:-0.035em;font-weight:800;min-height:2.05em">
+<sc-for list="{{heroLines}}" as="t" hint-placeholder-count="1">
+<sc-if value="{{t.active}}" hint-placeholder-val="{{true}}">
+<span class="heroline" style="display:block;white-space:nowrap">{{t.l1}}<br><span style="color:#EF7A30">{{t.l2}}</span></span>
+</sc-if>
+</sc-for>
+</h1>
+<div style="display:flex;gap:8px;margin-top:18px;max-width:220px">
+<sc-for list="{{heroDots}}" as="d" hint-placeholder-count="4">
+<button type="button" onClick="{{d.pick}}" aria-label="{{d.label}}" style="flex:1;height:22px;padding:8px 0;border:none;background:none;cursor:pointer">
+<span style="display:block;height:6px;border-radius:999px;background:#3A4249;overflow:hidden">
+<sc-if value="{{d.active}}" hint-placeholder-val="{{false}}"><span class="bar" style="display:block;height:100%;background:#EF7A30;border-radius:999px;animation-duration:4.5s"></span></sc-if>
+<sc-if value="{{d.done}}" hint-placeholder-val="{{false}}"><span style="display:block;height:100%;width:100%;background:#EF7A30;border-radius:999px"></span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+<p style="margin:18px 0 0;font-size:20px;line-height:1.5;max-width:500px;color:#D2DADF">Bot WhatsApp yang bales chat pelanggan dan nyatet pesanan. Kamu tinggal fokus jualan.</p>
+<p style="margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px;font-size:14px;font-weight:600"><span style="background:#30373D;padding:6px 12px;border-radius:999px">Toko online</span><span style="background:#30373D;padding:6px 12px;border-radius:999px">Laundry</span><span style="background:#30373D;padding:6px 12px;border-radius:999px">Salon</span><span style="background:#30373D;padding:6px 12px;border-radius:999px">Warung</span></p>
+<p style="margin:18px 0 0;font-size:17px;color:#D2DADF">Mulai <b style="font-size:26px;letter-spacing:-0.02em;color:#FFFFFF">Rp350rb</b> · udah termasuk dipasangin</p>
+<a class="btn" href="{{waLink}}" target="_blank" rel="noopener" style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:14px 28px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:18px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="color:#262C31;flex:none"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+Konsultasi gratis
+</a>
+<ul style="list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:#D2DADF"><li style="display:flex;align-items:center;gap:6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF7A30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>Gratis konsultasi</li><li style="display:flex;align-items:center;gap:6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF7A30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>Gak ada paksaan beli</li><li style="display:flex;align-items:center;gap:6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF7A30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>Dibales ±15 menit di jam kerja</li></ul>
+</div>
+<div class="heroart" style="flex:1 1 420px;min-width:0;position:relative;height:600px">
+<div class="heromwrap" style="position:absolute;left:-40px;bottom:0;z-index:1">
+<div aria-hidden="true" style="position:absolute;left:50%;bottom:-10px;width:240px;height:30px;margin-left:-120px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,0.55),rgba(0,0,0,0))"></div>
+<img src="/assets/v2/pose-tunjuk-v2.webp" alt="Maskot dicodinginAJA menunjuk ke contoh chat" class="heromascot" style="position:relative;height:500px;width:auto;display:block">
+</div>
+<div class="herocard" style="position:absolute;right:0;top:30px;width:270px;z-index:2;background:#FFFFFF;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,0.7)">
+<div style="background:#1F9E55;color:#FFFFFF;padding:12px 14px;display:flex;align-items:center;gap:10px">
+<span style="width:34px;height:34px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;flex:none"><img src="/assets/v2/logo.webp" alt="" style="width:24px;height:24px"></span>
+<span style="line-height:1.2"><b style="display:block;font-size:14px">Toko Kamu</b><span style="font-size:12px;opacity:0.9">dibalas bot · online</span></span>
+</div>
+<div aria-live="polite" style="background:#EFEAE2;padding:14px 12px;min-height:200px;display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.4;color:#262C31">
+<sc-for list="{{heroChip}}" as="c" hint-placeholder-count="1">
+<sc-if value="{{c.active}}" hint-placeholder-val="{{true}}">
+<div class="hb1" style="align-self:flex-start;max-width:88%;background:#FFFFFF;padding:8px 10px;border-radius:4px 12px 12px 12px">{{c.q}}<span style="display:block;text-align:right;font-size:10px;color:#667781;margin-top:2px">{{c.t}}</span></div>
+<div class="hb2" style="align-self:flex-end;max-width:88%;background:#D9FDD3;padding:8px 10px;border-radius:12px 4px 12px 12px">{{c.r}}<span style="display:flex;justify-content:flex-end;align-items:center;gap:4px;font-size:10px;color:#667781;margin-top:2px">{{c.t}} <svg aria-hidden="true" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="#53BDEB" stroke-width="1.6" stroke-linecap="round"><path d="M1 5l3 3 6-7M6 8l1 1 6-8"/></svg></span></div>
+<div class="hb3" style="align-self:center;display:flex;align-items:center;gap:6px;background:#FFF3E8;color:#B54708;font-weight:700;font-size:12px;padding:6px 12px;border-radius:999px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>{{c.pill}}</div>
+</sc-if>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="marquee-wrap" aria-label="Terhubung dengan aplikasi yang kamu pakai" style="margin-top:36px;padding:26px 0;border-top:1px solid #3A4249;border-bottom:1px solid #3A4249;overflow:hidden">
+<div class="marquee" style="display:flex;gap:64px;width:max-content;align-items:center;padding-right:64px"><div style="display:flex;gap:64px;align-items:center"><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" style="color:#FFFFFF"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>WhatsApp</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"><path d="M12 2.5v6M12 15.5v6M2.5 12h6M15.5 12h6M5.3 5.3l4.2 4.2M14.5 14.5l4.2 4.2M18.7 5.3l-4.2 4.2M9.5 14.5l-4.2 4.2"/></svg>Claude</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5z"/></svg>Gemini</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="32" height="28" viewBox="0 0 28 24" fill="none" stroke="#FFFFFF" stroke-width="2"><circle cx="3.5" cy="13" r="2.5"/><circle cx="11" cy="13" r="2.5"/><circle cx="22" cy="7" r="2.5"/><circle cx="22" cy="18" r="2.5"/><path d="M6 13h2.5M13.5 13h2l3.5-5M15.5 13l3.5 4.5"/></svg>n8n</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="26" height="28" viewBox="0 0 22 24"><path d="M3 1h11l6 6v14.5A1.5 1.5 0 0 1 18.5 23h-15A1.5 1.5 0 0 1 2 21.5v-19A1.5 1.5 0 0 1 3 1z" fill="#FFFFFF"/><path d="M6 11h10v8H6zM6 15h10M11 11v8" fill="none" stroke="#262C31" stroke-width="1.6"/></svg>Google Sheets</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"><path d="M12 5l6.5 13.5"/><path d="M12 5L6.5 16.5"/><circle cx="5.6" cy="18.4" r="2.6" fill="#FFFFFF" stroke="none"/></svg>Google Ads</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="30" height="28" viewBox="0 0 26 22" fill="#FFFFFF"><path d="M1 4.5C1 3 2.6 2.2 3.8 3.1L13 10l9.2-6.9c1.2-.9 2.8-.1 2.8 1.4V19a1.5 1.5 0 0 1-1.5 1.5H20V9.8l-7 5.2-7-5.2v10.7H2.5A1.5 1.5 0 0 1 1 19z"/></svg>Gmail</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="30" height="28" viewBox="0 0 26 23" fill="#FFFFFF"><path d="M8.6 1h8.8l8 13.6h-8.8z"/><path d="M7.4 2.4l4.4 7.6-6.9 11.8L.5 14.2z"/><path d="M6.7 22l4.4-7.4h14.3L21 22z"/></svg>Google Drive</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="34" height="28" viewBox="0 0 30 20" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"><path d="M3 13c0-5 2.2-9 5.5-9 4.5 0 7.5 12 12 12 2.6 0 4.5-2.3 4.5-6s-1.9-6-4.5-6C16 4 13 16 8.5 16 5.2 16 3 15 3 13z"/></svg>Meta</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M21.4 3.6L2.9 10.7c-1 .4-1 1.2 0 1.5l4.6 1.4 1.8 5.5c.2.7.9.8 1.4.4l2.6-2.1 4.8 3.5c.6.4 1.4.1 1.6-.6l3.2-15.2c.2-.9-.6-1.6-1.5-1.5zM9.6 13.9l8.4-5.9-6.7 7-.3 3.2z"/></svg>Telegram</span></div><div aria-hidden="true" style="display:flex;gap:64px;align-items:center"><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" style="color:#FFFFFF"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>WhatsApp</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"><path d="M12 2.5v6M12 15.5v6M2.5 12h6M15.5 12h6M5.3 5.3l4.2 4.2M14.5 14.5l4.2 4.2M18.7 5.3l-4.2 4.2M9.5 14.5l-4.2 4.2"/></svg>Claude</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5z"/></svg>Gemini</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="32" height="28" viewBox="0 0 28 24" fill="none" stroke="#FFFFFF" stroke-width="2"><circle cx="3.5" cy="13" r="2.5"/><circle cx="11" cy="13" r="2.5"/><circle cx="22" cy="7" r="2.5"/><circle cx="22" cy="18" r="2.5"/><path d="M6 13h2.5M13.5 13h2l3.5-5M15.5 13l3.5 4.5"/></svg>n8n</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="26" height="28" viewBox="0 0 22 24"><path d="M3 1h11l6 6v14.5A1.5 1.5 0 0 1 18.5 23h-15A1.5 1.5 0 0 1 2 21.5v-19A1.5 1.5 0 0 1 3 1z" fill="#FFFFFF"/><path d="M6 11h10v8H6zM6 15h10M11 11v8" fill="none" stroke="#262C31" stroke-width="1.6"/></svg>Google Sheets</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"><path d="M12 5l6.5 13.5"/><path d="M12 5L6.5 16.5"/><circle cx="5.6" cy="18.4" r="2.6" fill="#FFFFFF" stroke="none"/></svg>Google Ads</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="30" height="28" viewBox="0 0 26 22" fill="#FFFFFF"><path d="M1 4.5C1 3 2.6 2.2 3.8 3.1L13 10l9.2-6.9c1.2-.9 2.8-.1 2.8 1.4V19a1.5 1.5 0 0 1-1.5 1.5H20V9.8l-7 5.2-7-5.2v10.7H2.5A1.5 1.5 0 0 1 1 19z"/></svg>Gmail</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="30" height="28" viewBox="0 0 26 23" fill="#FFFFFF"><path d="M8.6 1h8.8l8 13.6h-8.8z"/><path d="M7.4 2.4l4.4 7.6-6.9 11.8L.5 14.2z"/><path d="M6.7 22l4.4-7.4h14.3L21 22z"/></svg>Google Drive</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="34" height="28" viewBox="0 0 30 20" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"><path d="M3 13c0-5 2.2-9 5.5-9 4.5 0 7.5 12 12 12 2.6 0 4.5-2.3 4.5-6s-1.9-6-4.5-6C16 4 13 16 8.5 16 5.2 16 3 15 3 13z"/></svg>Meta</span><span style="display:inline-flex;align-items:center;gap:12px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M21.4 3.6L2.9 10.7c-1 .4-1 1.2 0 1.5l4.6 1.4 1.8 5.5c.2.7.9.8 1.4.4l2.6-2.1 4.8 3.5c.6.4 1.4.1 1.6-.6l3.2-15.2c.2-.9-.6-1.6-1.5-1.5zM9.6 13.9l8.4-5.9-6.7 7-.3 3.2z"/></svg>Telegram</span></div></div>
+</div>
+</section>
+
+<!-- KENAPA -->
+<section style="background:#262C31;padding:88px 0 0">
+<div style="max-width:1000px;margin:0 auto;padding:0 28px;text-align:center">
+<h2 class="reveal" style="margin:0;font-size:clamp(32px,4vw,52px);line-height:1.12;letter-spacing:-0.025em;font-weight:700;color:#FFFFFF">Bantu usaha kamu beresin kerjaan yang itu-itu aja</h2>
+<a class="btn" href="{{waLink}}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-flex;align-items:center;min-height:48px;padding:12px 28px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:17px">Ngobrol dulu</a>
+</div>
+<div class="kpanel" style="background:#FFFFFF;border-radius:120px 120px 0 0">
+<div style="max-width:1180px;margin:0 auto;padding:0 28px 48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;text-align:center">
+<div style="display:flex;flex-direction:column;align-items:center">
+<img src="/assets/v2/pose-hp.webp" alt="Maskot memegang HP dan membalas chat" class="kimg" style="height:300px;object-fit:contain;display:block">
+<h3 style="margin:14px 0 6px;font-size:23px;font-weight:700">Cukup chat kami</h3>
+<p style="margin:0;color:#4A555E;max-width:280px">Ceritain aja masalahnya. Konsultasi gratis.</p>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center">
+<img src="/assets/v2/pose-laptop.webp" alt="Maskot membawa laptop berisi grafik" class="kimg" style="height:300px;object-fit:contain;display:block">
+<h3 style="margin:14px 0 6px;font-size:23px;font-weight:700">Harga jelas di awal</h3>
+<p style="margin:0;color:#4A555E;max-width:280px">Kamu tau biayanya dulu, baru kami kerjain.</p>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center">
+<img src="/assets/v2/pose-santai.webp" alt="Maskot duduk santai sambil minum kopi" class="kimg" style="height:300px;object-fit:contain;display:block">
+<h3 style="margin:14px 0 6px;font-size:23px;font-weight:700">Kamu tinggal santai</h3>
+<p style="margin:0;color:#4A555E;max-width:280px">Bot jalan sendiri. Ada error? Kami yang benerin.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BUAT SIAPA -->
+<section style="padding:0 0 104px">
+<div style="max-width:1240px;margin:0 auto;padding:0 28px">
+<h2 class="reveal" style="margin:0;text-align:center;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-0.025em;font-weight:700">#BiarSistemYangKerja<br>buat usaha apa aja</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:56px">
+
+<article class="zoomcard lift reveal" style="position:relative;border-radius:36px;overflow:hidden;min-height:520px;background:#30373D;display:flex;align-items:flex-end">
+<img src="/assets/v2/scene-toko.webp" alt="Pembeli membayar dengan HP di lapak pasar" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:relative;width:100%;padding:140px 32px 32px;background:linear-gradient(to top,rgba(10,14,18,0.94) 55%,rgba(10,14,18,0))">
+<h3 style="margin:0;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em">Toko dan pedagang</h3>
+<p style="margin:8px 0 0;color:#E3E8EB;font-size:16px">Pembeli nanya stok dan harga, langsung dijawab.</p>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:14px"><span style="align-self:flex-start;background:#FFFFFF;color:#262C31;padding:6px 12px;border-radius:4px 14px 14px 14px">"Kak, kaos hitam size L ada?"</span><span style="align-self:flex-start;background:#D9FDD3;color:#262C31;padding:6px 12px;border-radius:14px 4px 14px 14px">"Ada kak, Rp89rb. Mau dikirim ke mana?" <b style="color:#1F7A47;font-size:12px">· bot</b></span></div>
+<a class="btn" href="{{waToko}}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-flex;align-items:center;min-height:44px;padding:10px 22px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:15px">Tanya buat toko</a>
+</div>
+</article>
+
+<article class="zoomcard lift reveal" style="position:relative;border-radius:36px;overflow:hidden;min-height:520px;background:#30373D;display:flex;align-items:flex-end">
+<img src="/assets/v2/scene-laundry.webp" alt="Pemilik laundry dan pegawai mengecek cucian" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:relative;width:100%;padding:140px 32px 32px;background:linear-gradient(to top,rgba(10,14,18,0.94) 55%,rgba(10,14,18,0))">
+<h3 style="margin:0;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em">Laundry dan salon</h3>
+<p style="margin:8px 0 0;color:#E3E8EB;font-size:16px">Pelanggan tanya status atau booking jadwal, langsung dijawab.</p>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:14px"><span style="align-self:flex-start;background:#FFFFFF;color:#262C31;padding:6px 12px;border-radius:4px 14px 14px 14px">"Cucian saya udah beres belum?"</span><span style="align-self:flex-start;background:#D9FDD3;color:#262C31;padding:6px 12px;border-radius:14px 4px 14px 14px">"Udah kak, bisa diambil jam 4 sore ya." <b style="color:#1F7A47;font-size:12px">· bot</b></span></div>
+<a class="btn" href="{{waLaundry}}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-flex;align-items:center;min-height:44px;padding:10px 22px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:15px">Tanya buat laundry/salon</a>
+</div>
+</article>
+
+<article class="zoomcard lift reveal" style="position:relative;border-radius:36px;overflow:hidden;min-height:520px;background:#30373D;display:flex;align-items:flex-end">
+<img src="/assets/v2/scene-kafe.webp" alt="Pelanggan membayar di warung kelontong" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:relative;width:100%;padding:140px 32px 32px;background:linear-gradient(to top,rgba(10,14,18,0.94) 55%,rgba(10,14,18,0))">
+<h3 style="margin:0;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em">Warung dan kafe</h3>
+<p style="margin:8px 0 0;color:#E3E8EB;font-size:16px">Stok dipantau, rekap jualan harian jadi sendiri.</p>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:14px"><span style="align-self:flex-start;background:#FFFFFF;color:#262C31;padding:6px 12px;border-radius:4px 14px 14px 14px">"Bang, kopi susu masih ada?"</span><span style="align-self:flex-start;background:#D9FDD3;color:#262C31;padding:6px 12px;border-radius:14px 4px 14px 14px">"Masih bang, sisa 12 cup hari ini." <b style="color:#1F7A47;font-size:12px">· bot</b></span></div>
+<a class="btn" href="{{waWarung}}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-flex;align-items:center;min-height:44px;padding:10px 22px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:15px">Tanya buat warung</a>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- PRODUK & HARGA -->
+<section id="layanan" style="background:#262C31;padding:104px 0;overflow:hidden">
+<div style="max-width:1280px;margin:0 auto;padding:0 28px">
+<div style="{{flipStyle}}">
+
+<sc-if value="{{showProducts}}" hint-placeholder-val="{{true}}">
+<div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;color:#FFFFFF">
+<div>
+<p style="margin:0;font-size:14px;font-weight:700;letter-spacing:0.08em;color:#FFB07A">PRODUK DAN HARGA</p>
+<h2 class="reveal" style="margin:12px 0 0;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-0.025em;font-weight:700">Pilih yang siap pakai,<br>atau kami bikinin <span style="color:#EF7A30">khusus.</span></h2>
+</div>
+<p style="margin:0;max-width:380px;color:#D2DADF;font-size:16px">Harga jelas dari awal. Klik <b style="color:#FFFFFF">Pesan</b>, langsung nyambung ke WhatsApp kami.</p>
+</div>
+
+<div role="group" aria-label="Filter kategori" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:36px">
+<sc-for list="{{catChips}}" as="c" hint-placeholder-count="9">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:28px">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="6">
+<article class="lift chip" style="background:#FFFFFF;color:#262C31;border-radius:28px;overflow:hidden;display:flex;flex-direction:column">
+<div style="{{p.thumb}}">
+<span style="position:absolute;left:14px;top:14px;background:rgba(255,255,255,0.9);color:#262C31;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">{{p.cat}}</span>
+<span style="position:absolute;right:14px;top:14px;background:#262C31;color:#FFFFFF;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">{{p.badge}}</span>
+<span style="width:72px;height:72px;border-radius:22px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -10px rgba(38,44,49,0.35)">
+<sc-if value="{{p.iAuto}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 28 24" fill="none" stroke="#D9601A" stroke-width="2.2"><circle cx="4" cy="12" r="2.8"/><circle cx="12" cy="12" r="2.8"/><circle cx="23" cy="6" r="2.8"/><circle cx="23" cy="18" r="2.8"/><path d="M6.8 12h2.4M14.8 12h2l3.5-5M16.8 12l3.6 4.6"/></svg></sc-if>
+<sc-if value="{{p.iChat}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M8 11h.01M12 11h.01M16 11h.01" stroke-width="3" stroke-linecap="round"/></svg></sc-if>
+<sc-if value="{{p.iConvera}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16v-4M11 16V8M16 16v-6M20 16V5"/><path d="M4 9l5-4 4 3 7-5"/></svg></sc-if>
+<sc-if value="{{p.iWeb}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="15" rx="2.5"/><path d="M2.5 8.5h19M6 6.3h.01M8.5 6.3h.01" stroke-linecap="round"/></svg></sc-if>
+<sc-if value="{{p.iMobile}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="30" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2" stroke-linecap="round"/></svg></sc-if>
+<sc-if value="{{p.iPos}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><path d="M7 19h10l1 2H6zM12 15v4M7 7h5M7 10h3"/></svg></sc-if>
+<sc-if value="{{p.iFinance}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3"/><path d="M6 9.5h.01M18 15.5h.01" stroke-width="3" stroke-linecap="round"/></svg></sc-if>
+<sc-if value="{{p.iSecurity}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="32" height="34" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round"/></svg></sc-if>
+</span>
+</div>
+<div style="padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1">
+<h3 style="margin:0;font-size:20px;font-weight:700;line-height:1.25;letter-spacing:-0.01em">{{p.name}}</h3>
+<p style="margin:0;color:#4A555E;font-size:15px;line-height:1.5">{{p.desc}}</p>
+<ul style="list-style:none;padding:0;margin:4px 0 0;display:flex;flex-direction:column;gap:8px;font-size:14px">
+<sc-for list="{{p.points}}" as="pt" hint-placeholder-count="3">
+<li style="display:flex;gap:8px;align-items:flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9601A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><polyline points="20 6 9 17 4 12"/></svg>{{pt.t}}</li>
+</sc-for>
+</ul>
+<div style="margin-top:auto;padding-top:16px;border-top:1px solid #F2E4D8;display:flex;justify-content:space-between;align-items:flex-end;gap:12px">
+<div style="line-height:1.25"><span style="font-size:12px;color:#4A555E">{{p.priceLabel}}</span><br><b style="font-size:21px;letter-spacing:-0.02em;white-space:nowrap">{{p.price}}</b><br><span style="font-size:12px;color:#4A555E">{{p.note}}</span></div>
+<a class="btn" href="{{p.wa}}" target="_blank" rel="noopener" style="flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:10px 18px;border-radius:999px;background:#262C31;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px">Pesan <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+</div>
+</div>
+</article>
+</sc-for>
+<article class="spancta lift" style="border-radius:28px;background:#EF7A30;color:#262C31;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:300px;background-image:repeating-linear-gradient(135deg,rgba(38,44,49,0.06) 0 2px,transparent 2px 16px)">
+<div>
+<p style="margin:0;font-size:13px;font-weight:700;letter-spacing:0.06em">PROYEK CUSTOM</p>
+<h3 style="margin:10px 0 0;font-size:clamp(26px,3vw,34px);line-height:1.1;letter-spacing:-0.02em;font-weight:700">Gak nemu yang pas?<br>Kami rancang khusus buat usahamu.</h3>
+<p style="margin:12px 0 0;font-size:15px;max-width:440px">Buat alur yang pakai banyak aplikasi, AI, atau aturan kerja sendiri. Mulai Rp1.500.000.</p>
+</div>
+<button type="button" onClick="{{toCustom}}" class="btn" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:12px 26px;border-radius:999px;border:none;background:#262C31;color:#FFFFFF;font-weight:700;font-size:17px;cursor:pointer">Lihat paket Custom <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></button>
+</article>
+</div>
+
+
+</div>
+</sc-if>
+
+<sc-if value="{{showCustom}}" hint-placeholder-val="{{false}}">
+<div style="background:#1C2125;border:1px solid #3A4249;border-radius:36px;padding:clamp(24px,5vw,56px);color:#FFFFFF">
+<div style="display:flex;flex-wrap:wrap;gap:40px">
+<div style="flex:1 1 420px;min-width:0">
+<p style="margin:0;font-size:14px;font-weight:700;letter-spacing:0.08em;color:#FFB07A">PROYEK CUSTOM</p>
+<h2 style="margin:12px 0 0;font-size:clamp(32px,4vw,52px);line-height:1.08;letter-spacing:-0.025em;font-weight:700">Butuh lebih dari template?<br><span style="color:#EF7A30">Kami rancang dari nol.</span></h2>
+<p style="margin:18px 0 0;color:#D2DADF;font-size:17px;max-width:520px">Buat usaha yang pakai banyak aplikasi, AI, atau aturan kerja khusus. Cakupan, revisi, dan dukungan disepakati dari awal.</p>
+<div style="display:flex;flex-wrap:wrap;gap:40px;margin-top:28px">
+<div><span style="font-size:13px;color:#D2DADF">Mulai dari</span><br><b style="font-size:34px;letter-spacing:-0.02em">Rp1.500.000</b></div>
+<div><span style="font-size:13px;color:#D2DADF">Lama pengerjaan</span><br><b style="font-size:34px;letter-spacing:-0.02em">5+ hari</b></div>
+</div>
+<a class="btn" href="{{waCustom}}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:14px 28px;border-radius:999px;background:#EF7A30;color:#262C31;text-decoration:none;font-weight:700;font-size:17px">Konsultasi gratis via WhatsApp <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+</div>
+<div style="flex:1 1 420px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;align-content:start">
+<div class="lift" style="background:#262C31;border:1px solid #3A4249;border-radius:22px;padding:22px"><b style="color:#EF7A30;font-size:14px">01</b><h3 style="margin:10px 0 6px;font-size:19px">Chatbot AI</h3><p style="margin:0;color:#D2DADF;font-size:14px">WhatsApp atau Telegram yang paham produk dan aturan usahamu.</p></div>
+<div class="lift" style="background:#262C31;border:1px solid #3A4249;border-radius:22px;padding:22px"><b style="color:#EF7A30;font-size:14px">02</b><h3 style="margin:10px 0 6px;font-size:19px">Sambung aplikasi</h3><p style="margin:0;color:#D2DADF;font-size:14px">Marketplace, pembayaran, CRM, dan tools internal jadi satu alur.</p></div>
+<div class="lift" style="background:#262C31;border:1px solid #3A4249;border-radius:22px;padding:22px"><b style="color:#EF7A30;font-size:14px">03</b><h3 style="margin:10px 0 6px;font-size:19px">Stok dan dokumen</h3><p style="margin:0;color:#D2DADF;font-size:14px">Stok, invoice, dan arsip diproses otomatis.</p></div>
+<div class="lift" style="background:#262C31;border:1px solid #3A4249;border-radius:22px;padding:22px"><b style="color:#EF7A30;font-size:14px">04</b><h3 style="margin:10px 0 6px;font-size:19px">Kelola tim</h3><p style="margin:0;color:#D2DADF;font-size:14px">Tugas, absensi, dan laporan harian di satu tempat.</p></div>
+</div>
+</div>
+<ol style="list-style:none;padding:28px 0 0;margin:40px 0 0;border-top:1px solid #3A4249;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px">
+<li><b style="color:#EF7A30">1</b><br><b style="font-size:17px">Konsultasi</b><br><span style="color:#D2DADF;font-size:14px">Kami petakan proses dan kebutuhanmu.</span></li>
+<li><b style="color:#EF7A30">2</b><br><b style="font-size:17px">Penawaran</b><br><span style="color:#D2DADF;font-size:14px">Cakupan, harga, dan jadwal jelas.</span></li>
+<li><b style="color:#EF7A30">3</b><br><b style="font-size:17px">Pengerjaan</b><br><span style="color:#D2DADF;font-size:14px">Kami buat, uji, dan perbaiki.</span></li>
+<li><b style="color:#EF7A30">4</b><br><b style="font-size:17px">Serah terima</b><br><span style="color:#D2DADF;font-size:14px">Panduan, pelatihan, dan dukungan.</span></li>
+</ol>
+<div style="margin-top:36px;display:flex;justify-content:center">
+<button type="button" onClick="{{toProducts}}" class="btn" style="display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:12px 26px;border-radius:999px;border:1.5px solid #FFFFFF;background:transparent;color:#FFFFFF;font-weight:700;font-size:16px;cursor:pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Balik ke produk siap pakai</button>
+</div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</section>
+
+
+<!-- DEMO BOT (n8n) -->
+<section id="demo" style="background:#262C31;padding:104px 0;color:#FFFFFF">
+<div style="max-width:1280px;margin:0 auto;padding:0 28px">
+<div style="text-align:center;max-width:820px;margin:0 auto">
+<p style="margin:0;display:inline-flex;align-items:center;gap:8px;background:rgba(239,122,48,0.16);color:#FFB07A;font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px"><span class="livedot" style="width:8px;height:8px;border-radius:50%;background:#3FB950"></span>Live demo</p>
+<h2 class="reveal" style="margin:16px 0 0;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-0.025em;font-weight:700">Lihat botnya kerja,<br>detik demi detik</h2>
+<p style="margin:16px 0 0;font-size:18px;color:#D2DADF">Kiri: "otak" bot di n8n. Kanan: yang dilihat pelanggan di WhatsApp. Semua kejadian dalam hitungan detik.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:28px;margin-top:56px;align-items:stretch">
+
+<!-- n8n canvas -->
+<div style="flex:1.7 1 560px;min-width:0;border-radius:28px;overflow:hidden;border:1px solid #3A4249;background:#2B2E33;display:flex;flex-direction:column">
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 12px;padding:12px 18px;background:#232528;border-bottom:1px solid #3A3D42;font-size:13px">
+<span style="display:flex;align-items:center;gap:10px"><b style="font-size:14px">Bot Toko Baju</b><span style="color:#9AA0A6">/ Workflow</span></span>
+<span style="display:flex;align-items:center;gap:14px">
+<span style="display:flex;align-items:center;gap:8px;color:#C9CDD2">Active<span style="width:34px;height:18px;border-radius:999px;background:#3FB950;position:relative;display:inline-block"><span style="position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#FFFFFF"></span></span></span>
+<span class="hide-sm" style="color:#9AA0A6">Executions: <b style="color:#FFFFFF">{{execCount}}</b></span>
+<button type="button" onClick="{{runDemo}}" style="display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 14px;border-radius:8px;border:none;background:#EF7A30;color:#262C31;font-weight:700;font-size:13px;cursor:pointer"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="#262C31"><polygon points="6 4 20 12 6 20"/></svg>Test workflow</button>
+</span>
+</div>
+<div id="n8nfit" class="n8ngrid" style="position:relative;height:{{n8nH}};overflow:hidden">
+<div style="{{n8nInner}}">
+
+<svg aria-hidden="true" width="900" height="460" viewBox="0 0 900 460" style="position:absolute;inset:0">
+<path d="M140 175 L212 175" class="{{e1.cls}}" style="{{e1.st}}" fill="none"/>
+<path d="M480 175 L562 175" class="{{e2.cls}}" style="{{e2.st}}" fill="none"/>
+<path d="M680 175 L752 175" class="{{e3.cls}}" style="{{e3.st}}" fill="none"/>
+<polygon points="212,169 220,175 212,181" style="{{e1.fill}}"/>
+<polygon points="562,169 570,175 562,181" style="{{e2.fill}}"/>
+<polygon points="752,169 760,175 752,181" style="{{e3.fill}}"/>
+<circle cx="140" cy="175" r="5" fill="#8A9097"/><circle cx="480" cy="175" r="5" fill="#8A9097"/><circle cx="680" cy="175" r="5" fill="#8A9097"/>
+<path d="M265 236 L265 312" stroke-dasharray="5 5" style="{{l1}}" fill="none"/>
+<path d="M350 236 L350 312" stroke-dasharray="5 5" style="{{l2}}" fill="none"/>
+<path d="M435 236 L435 312" stroke-dasharray="5 5" style="{{l3}}" fill="none"/>
+<rect x="260" y="225" width="10" height="10" transform="rotate(45 265 230)" fill="#C9CDD2"/>
+<rect x="345" y="225" width="10" height="10" transform="rotate(45 350 230)" fill="#C9CDD2"/>
+<rect x="430" y="225" width="10" height="10" transform="rotate(45 435 230)" fill="#C9CDD2"/>
+</svg>
+
+<sc-if value="{{e1.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;left:152px;top:150px;font-size:11px;color:#3FB950;font-weight:600">1 item</span></sc-if>
+<sc-if value="{{e2.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;left:496px;top:150px;font-size:11px;color:#3FB950;font-weight:600">1 item</span></sc-if>
+<sc-if value="{{e3.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;left:690px;top:150px;font-size:11px;color:#3FB950;font-weight:600">1 item</span></sc-if>
+
+<!-- Trigger node -->
+<div style="position:absolute;left:30px;top:120px;width:110px;height:110px">
+<div style="{{nTrig.box}}">
+<svg aria-hidden="true" width="46" height="46" viewBox="0 0 24 24" style="color:#25D366"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+<span style="position:absolute;left:-14px;top:40px;width:24px;height:24px;border-radius:50%;background:#2B2E33;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="#FF9B45"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
+<sc-if value="{{nTrig.run}}" hint-placeholder-val="{{false}}"><span class="spin" style="position:absolute;right:8px;bottom:8px;width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,155,69,0.3);border-top-color:#FF9B45"></span></sc-if>
+<sc-if value="{{nTrig.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;right:8px;bottom:8px;width:20px;height:20px;border-radius:50%;background:#3FB950;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></sc-if>
+</div>
+<p style="margin:10px 0 0;text-align:center;font-size:13px;font-weight:600;line-height:1.3;width:150px;margin-left:-20px">WhatsApp Trigger<br><span style="font-weight:400;color:#9AA0A6;font-size:12px">On new message</span></p>
+</div>
+
+<!-- AI Agent -->
+<div style="position:absolute;left:220px;top:120px;width:260px;height:110px">
+<div style="{{nAgent.box}}">
+<span style="display:flex;align-items:center;gap:12px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><circle cx="9" cy="14" r="1.3" fill="#FFFFFF"/><circle cx="15" cy="14" r="1.3" fill="#FFFFFF"/><path d="M2 13v2M22 13v2"/></svg>
+<span style="font-size:15px;font-weight:700;line-height:1.2">AI Agent<br><span style="font-weight:400;color:#9AA0A6;font-size:12px">Tools Agent</span></span>
+</span>
+<sc-if value="{{nAgent.run}}" hint-placeholder-val="{{false}}"><span class="spin" style="position:absolute;right:10px;bottom:10px;width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,155,69,0.3);border-top-color:#FF9B45"></span></sc-if>
+<sc-if value="{{nAgent.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;right:10px;bottom:10px;width:20px;height:20px;border-radius:50%;background:#3FB950;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></sc-if>
+</div>
+<span style="position:absolute;left:15px;top:124px;width:60px;text-align:center;font-size:10px;color:#9AA0A6;white-space:nowrap">Chat Model</span><span style="position:absolute;left:100px;top:124px;width:60px;text-align:center;font-size:11px;color:#9AA0A6">Memory</span><span style="position:absolute;left:185px;top:124px;width:60px;text-align:center;font-size:11px;color:#9AA0A6">Tool</span>
+</div>
+
+<!-- Sub nodes -->
+<div style="position:absolute;left:233px;top:312px;width:64px;text-align:center">
+<div style="{{sModel.box}}"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="#8AB4F8"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5z"/></svg></div>
+<p style="margin:8px 0 0;font-size:11px;line-height:1.25;width:80px;margin-left:-8px;color:#C9CDD2">Gemini<br>Chat Model</p>
+</div>
+<div style="position:absolute;left:318px;top:312px;width:64px;text-align:center">
+<div style="{{sMem.box}}"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C9CDD2" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+<p style="margin:8px 0 0;font-size:11px;line-height:1.25;width:80px;margin-left:-8px;color:#C9CDD2">Simple<br>Memory</p>
+</div>
+<div style="position:absolute;left:403px;top:312px;width:64px;text-align:center">
+<div style="{{sTool.box}}"><svg aria-hidden="true" width="24" height="26" viewBox="0 0 22 24"><path d="M3 1h11l6 6v14.5A1.5 1.5 0 0 1 18.5 23h-15A1.5 1.5 0 0 1 2 21.5v-19A1.5 1.5 0 0 1 3 1z" fill="#34A853"/><path d="M6 11h10v8H6zM6 15h10M11 11v8" fill="none" stroke="#FFFFFF" stroke-width="1.6"/></svg></div>
+<p style="margin:8px 0 0;font-size:11px;line-height:1.25;width:80px;margin-left:-8px;color:#C9CDD2">Cek stok<br>(Sheets)</p>
+</div>
+
+<!-- Sheets append -->
+<div style="position:absolute;left:570px;top:120px;width:110px;height:110px">
+<div style="{{nSheet.box}}">
+<svg aria-hidden="true" width="40" height="44" viewBox="0 0 22 24"><path d="M3 1h11l6 6v14.5A1.5 1.5 0 0 1 18.5 23h-15A1.5 1.5 0 0 1 2 21.5v-19A1.5 1.5 0 0 1 3 1z" fill="#34A853"/><path d="M6 11h10v8H6zM6 15h10M11 11v8" fill="none" stroke="#FFFFFF" stroke-width="1.6"/></svg>
+<sc-if value="{{nSheet.run}}" hint-placeholder-val="{{false}}"><span class="spin" style="position:absolute;right:8px;bottom:8px;width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,155,69,0.3);border-top-color:#FF9B45"></span></sc-if>
+<sc-if value="{{nSheet.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;right:8px;bottom:8px;width:20px;height:20px;border-radius:50%;background:#3FB950;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></sc-if>
+</div>
+<p style="margin:10px 0 0;text-align:center;font-size:13px;font-weight:600;line-height:1.3;width:150px;margin-left:-20px">Google Sheets<br><span style="font-weight:400;color:#9AA0A6;font-size:12px">append: row</span></p>
+</div>
+
+<!-- WA send -->
+<div style="position:absolute;left:760px;top:120px;width:110px;height:110px">
+<div style="{{nSend.box}}">
+<svg aria-hidden="true" width="46" height="46" viewBox="0 0 24 24" style="color:#25D366"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+<sc-if value="{{nSend.run}}" hint-placeholder-val="{{false}}"><span class="spin" style="position:absolute;right:8px;bottom:8px;width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,155,69,0.3);border-top-color:#FF9B45"></span></sc-if>
+<sc-if value="{{nSend.done}}" hint-placeholder-val="{{false}}"><span class="chip" style="position:absolute;right:8px;bottom:8px;width:20px;height:20px;border-radius:50%;background:#3FB950;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></sc-if>
+</div>
+<p style="margin:10px 0 0;text-align:center;font-size:13px;font-weight:600;line-height:1.3;width:150px;margin-left:-20px">WhatsApp<br><span style="font-weight:400;color:#9AA0A6;font-size:12px">send: message</span></p>
+</div>
+
+<!-- toast -->
+<sc-if value="{{toast}}" hint-placeholder-val="{{false}}">
+<div class="chip" style="position:absolute;right:20px;bottom:24px;background:#1F2124;border:1px solid #3FB950;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:13px">
+<span style="width:20px;height:20px;border-radius:50%;background:#3FB950;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+<span><b>Workflow executed successfully</b><br><span style="color:#9AA0A6">dalam 3,2 detik</span></span>
+</div>
+</sc-if>
+
+
+</div>
+</div>
+</div>
+
+<!-- phone -->
+<div style="flex:1 1 300px;min-width:0;max-width:420px;margin:0 auto;width:100%;border-radius:36px;background:#111518;padding:10px;box-shadow:0 30px 60px -24px rgba(0,0,0,0.6)">
+<div style="border-radius:28px;overflow:hidden;background:#EFEAE2;color:#262C31;height:100%;min-height:440px;display:flex;flex-direction:column">
+<div style="background:#075E54;color:#FFFFFF;padding:14px 16px;display:flex;align-items:center;gap:12px">
+<span style="width:38px;height:38px;border-radius:50%;background:#FFE3CF;color:#D9601A;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px">TB</span>
+<span style="line-height:1.25"><b style="font-size:15px">Toko Baju Rina</b><br><span style="font-size:12px;opacity:0.85">{{phoneStatus}}</span></span>
+</div>
+<div aria-live="polite" style="flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.45">
+<span style="align-self:center;background:#FFFFFF;color:#4A555E;font-size:11px;padding:3px 10px;border-radius:8px">Hari ini</span>
+<sc-if value="{{showQ}}" hint-placeholder-val="{{true}}">
+<div class="chip" style="align-self:flex-start;max-width:84%;background:#FFFFFF;padding:8px 12px;border-radius:4px 12px 12px 12px">Kak, kaos hitam oversize size L masih ada? Harganya berapa?<span style="display:block;text-align:right;font-size:11px;color:#667781;margin-top:2px">23.41</span></div>
+</sc-if>
+<sc-if value="{{showTyping}}" hint-placeholder-val="{{false}}">
+<div class="chip" style="align-self:flex-end;background:#D9FDD3;padding:10px 14px;border-radius:12px 4px 12px 12px;display:flex;gap:4px"><span class="dot1" style="width:7px;height:7px;border-radius:50%;background:#667781"></span><span class="dot2" style="width:7px;height:7px;border-radius:50%;background:#667781"></span><span class="dot3" style="width:7px;height:7px;border-radius:50%;background:#667781"></span></div>
+</sc-if>
+<sc-if value="{{showA}}" hint-placeholder-val="{{true}}">
+<div class="chip" style="align-self:flex-end;max-width:84%;background:#D9FDD3;padding:8px 12px;border-radius:12px 4px 12px 12px">Masih ada kak, sisa 4 pcs. Harganya Rp89.000. Mau langsung order? Ketik nama dan alamat ya, nanti ongkirnya dihitungin.<span style="display:flex;justify-content:flex-end;align-items:center;gap:4px;font-size:11px;color:#667781;margin-top:2px">23.41 <svg aria-hidden="true" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="#53BDEB" stroke-width="1.6" stroke-linecap="round"><path d="M1 5l3 3 6-7M6 8l1 1 6-8"/></svg></span></div>
+</sc-if>
+<sc-if value="{{showSheet}}" hint-placeholder-val="{{false}}">
+<div class="chip" style="align-self:center;margin-top:auto;background:#FFFFFF;border:1px solid #DDE5DA;border-radius:12px;padding:8px 12px;font-size:12px;display:flex;align-items:center;gap:8px">
+<svg aria-hidden="true" width="14" height="16" viewBox="0 0 22 24"><path d="M3 1h11l6 6v14.5A1.5 1.5 0 0 1 18.5 23h-15A1.5 1.5 0 0 1 2 21.5v-19A1.5 1.5 0 0 1 3 1z" fill="#34A853"/></svg>
+<span><b>Baris baru di Sheets:</b> Pembeli · Kaos hitam L · Tanya stok</span>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</div>
+
+<div style="margin-top:48px;display:flex;flex-direction:column;align-items:center;text-align:center">
+<a class="btn pulse" href="{{waDemo}}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;min-height:58px;padding:14px 30px;border-radius:999px;background:#25D366;color:#262C31;text-decoration:none;font-weight:700;font-size:19px">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="color:#262C31;flex:none"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+Coba bot-nya sekarang
+</a>
+<p style="margin:14px 0 0;font-size:15px;color:#D2DADF;max-width:520px">Bot demo ini pura-pura jadi toko baju. Tanya stok, harga, atau ongkir. Dibales otomatis, 24 jam.</p>
+</div>
+</div>
+</section>
+
+
+<!-- STUDI KASUS -->
+<section id="project" style="background:#FFF6EE;padding:104px 0">
+<div style="max-width:1240px;margin:0 auto;padding:0 28px">
+<h2 class="reveal" style="margin:0;text-align:center;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-0.025em;font-weight:700">Project yang udah kami kerjain</h2>
+<p style="margin:16px auto 0;text-align:center;color:#4A555E;font-size:18px;max-width:600px">Bukan janji. Ini masalahnya, ini yang kami buat, ini hasilnya.</p>
+<div role="tablist" aria-label="Pilih project" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:36px">
+<sc-for list="{{csTabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+
+<!-- 1. Website INI Best Home -->
+<sc-if value="{{cs0}}" hint-placeholder-val="{{true}}">
+<article class="chip" style="margin-top:36px;background:#FFFFFF;border-radius:36px;padding:clamp(24px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;align-items:center"><div style="flex:1 1 400px;min-width:0">
+<p style="margin:0;font-size:14px;font-weight:700;color:#D9601A;letter-spacing:0.04em">WEBSITE · JASA PIJAT PANGGILAN</p>
+<h3 style="margin:8px 0 0;font-size:34px;font-weight:700;letter-spacing:-0.02em">Website INI Best Home</h3>
+<dl style="margin:24px 0 0;display:flex;flex-direction:column;gap:16px;font-size:16px">
+<div><dt style="font-weight:700">Masalahnya</dt><dd style="margin:4px 0 0;color:#4A555E">Aplikasinya udah rilis di Android dan iOS, tapi belum ada website buat ngenalin layanan dan ngarahin orang buat download. Google Play juga minta halaman hapus akun.</dd></div>
+<div><dt style="font-weight:700">Yang kami buat</dt><dd style="margin:4px 0 0;color:#4A555E">Website premium yang ngejelasin layanan, fitur aplikasi, paket member, dan cara jadi mitra. Lengkap dengan halaman Kebijakan Privasi dan Hapus Akun yang satu tema sama aplikasinya.</dd></div>
+</dl>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:24px"><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">2 toko</b><span style="font-size:13px;color:#4A555E">link Google Play dan App Store di satu tempat</span></div><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">Lolos</b><span style="font-size:13px;color:#4A555E">review Google Play dan App Store</span></div><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">Rapi</b><span style="font-size:13px;color:#4A555E">di HP dan laptop</span></div></div>
+</div><div style="flex:1.3 1 460px;min-width:0;background:#FFE3CF;border-radius:28px;padding:clamp(16px,3vw,28px);display:flex;flex-direction:column;gap:14px"><div style="border-radius:16px;overflow:hidden;background:#FFFFFF;box-shadow:0 20px 40px -20px rgba(38,44,49,0.45)">
+<div style="display:flex;align-items:center;gap:6px;padding:10px 14px;background:#262C31"><span style="width:10px;height:10px;border-radius:50%;background:#FF5F57"></span><span style="width:10px;height:10px;border-radius:50%;background:#FEBC2E"></span><span style="width:10px;height:10px;border-radius:50%;background:#28C840"></span><span style="margin-left:10px;color:#D2DADF;font-size:12px">home.besthomeservice.id</span></div>
+<div style="position:relative;aspect-ratio:1915/1096;background:#211A14"><sc-for list="{{webShots}}" as="w" hint-placeholder-count="4"><img src="{{w.src}}" alt="{{w.alt}}" style="{{w.style}}"></sc-for></div>
+</div>
+<div style="display:flex;gap:8px;justify-content:center"><sc-for list="{{webDots}}" as="d" hint-placeholder-count="4"><button type="button" onClick="{{d.pick}}" aria-label="{{d.label}}" style="border:none;background:none;padding:8px 2px;cursor:pointer"><span style="{{d.style}}"></span></button></sc-for></div>
+</div>
+</article>
+</sc-if>
+
+<!-- 2. Aplikasi INI Best Home -->
+<sc-if value="{{cs1}}" hint-placeholder-val="{{false}}">
+<article class="chip" style="margin-top:36px;background:#FFFFFF;border-radius:36px;padding:clamp(24px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;align-items:center"><div style="flex:1 1 400px;min-width:0">
+<p style="margin:0;font-size:14px;font-weight:700;color:#D9601A;letter-spacing:0.04em">APLIKASI ANDROID DAN iOS · JASA PIJAT PANGGILAN</p>
+<h3 style="margin:8px 0 0;font-size:34px;font-weight:700;letter-spacing:-0.02em">Aplikasi INI Best Home</h3>
+<dl style="margin:24px 0 0;display:flex;flex-direction:column;gap:16px;font-size:16px">
+<div><dt style="font-weight:700">Masalahnya</dt><dd style="margin:4px 0 0;color:#4A555E">Pesanan pijat panggilan masih lewat chat. Pelanggan susah lihat harga, pilih terapis, dan atur jadwal, admin juga kewalahan nyatet.</dd></div>
+<div><dt style="font-weight:700">Yang kami buat</dt><dd style="margin:4px 0 0;color:#4A555E">Aplikasi buat Android dan iOS. Pelanggan pilih layanan, pilih terapis (Standard atau Pro, pria atau wanita), atur jadwal, lihat total harga sebelum bayar, plus member Bronze sampai Gold, referral, dan forum.</dd></div>
+</dl>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:24px"><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">2</b><span style="font-size:13px;color:#4A555E">platform: Android dan iOS</span></div><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">5.0</b><span style="font-size:13px;color:#4A555E">rating layanan di aplikasi</span></div><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">40+</b><span style="font-size:13px;color:#4A555E">booking per layanan</span></div></div>
+</div><div style="flex:1.3 1 460px;min-width:0;background:#FFE3CF;border-radius:28px;padding:32px 16px;display:flex;flex-wrap:wrap;gap:28px;justify-content:center;align-items:flex-end">
+<div style="text-align:center">
+<div style="width:230px;border-radius:40px;background:#1C2125;padding:9px;box-shadow:0 24px 40px -20px rgba(38,44,49,0.6)">
+<div style="position:relative;border-radius:32px;overflow:hidden;aspect-ratio:738/1600;background:#F7F3EE">
+<sc-for list="{{andShots}}" as="a" hint-placeholder-count="4"><img src="{{a.src}}" alt="{{a.alt}}" style="{{a.style}}"></sc-for>
+<span style="position:absolute;left:50%;top:9px;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:#0B0D0F;box-shadow:0 0 0 2px rgba(255,255,255,0.15)"></span>
+</div>
+</div>
+<p style="margin:12px 0 0;font-size:14px;font-weight:700">Android</p>
+</div>
+<div style="text-align:center">
+<div style="width:230px;border-radius:40px;background:#1C2125;padding:9px;box-shadow:0 24px 40px -20px rgba(38,44,49,0.6)">
+<div style="position:relative;border-radius:32px;overflow:hidden;aspect-ratio:738/1600;background:#F7F3EE">
+<sc-for list="{{iosShots}}" as="p" hint-placeholder-count="4">
+<div style="{{p.wrap}}">
+<div style="{{p.bar}}"><b style="font-size:12px">9:41</b><span style="display:flex;gap:5px;align-items:center"><svg aria-hidden="true" width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg aria-hidden="true" width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 2.2c2.1 0 4 .8 5.4 2.1l1.1-1.1C12.3 1.6 10 .6 7.5.6S2.7 1.6 1 3.2l1.1 1.1c1.4-1.3 3.3-2.1 5.4-2.1zm0 3.2c1.2 0 2.3.5 3.1 1.2l1.1-1.1c-1.1-1-2.6-1.7-4.2-1.7s-3.1.7-4.2 1.7l1.1 1.1c.8-.7 1.9-1.2 3.1-1.2zm0 3.1L9.2 10 7.5 11.7 5.8 10z"/></svg><span style="width:24px;height:11px;border:1.4px solid currentColor;border-radius:3px;padding:1px;display:inline-flex"><span style="flex:1;background:currentColor;border-radius:1px"></span></span></span></div>
+<img src="{{p.src}}" alt="{{p.alt}}" style="position:absolute;left:0;right:0;top:38px;bottom:0;width:100%;height:calc(100% - 38px);object-fit:cover;object-position:top;display:block">
+</div>
+</sc-for>
+<span style="position:absolute;left:50%;top:9px;transform:translateX(-50%);width:62px;height:18px;border-radius:999px;background:#000000;z-index:5"></span>
+<span style="position:absolute;left:50%;bottom:7px;transform:translateX(-50%);width:90px;height:4px;border-radius:999px;background:rgba(38,44,49,0.55);z-index:5"></span>
+</div>
+</div>
+<p style="margin:12px 0 0;font-size:14px;font-weight:700">iPhone</p>
+</div>
+</div>
+</article>
+</sc-if>
+
+<!-- 3. Kasir Warkop -->
+<sc-if value="{{cs2}}" hint-placeholder-val="{{false}}">
+<article class="chip" style="margin-top:36px;background:#FFFFFF;border-radius:36px;padding:clamp(24px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;align-items:center"><div style="flex:1 1 400px;min-width:0">
+<p style="margin:0;font-size:14px;font-weight:700;color:#D9601A;letter-spacing:0.04em">SISTEM KASIR · WARKOP</p>
+<h3 style="margin:8px 0 0;font-size:34px;font-weight:700;letter-spacing:-0.02em">Kasir Warkop Titik Hoki</h3>
+<dl style="margin:24px 0 0;display:flex;flex-direction:column;gap:16px;font-size:16px">
+<div><dt style="font-weight:700">Masalahnya</dt><dd style="margin:4px 0 0;color:#4A555E">Pesanan dicatat di kertas, kembalian sering salah hitung, dan rekap jualan tiap malam makan waktu satu jam.</dd></div>
+<div><dt style="font-weight:700">Yang kami buat</dt><dd style="margin:4px 0 0;color:#4A555E">Website kasir di tablet dengan printer struk. Menu per kategori, pesanan per meja, catatan rasa dan suhu, hitung kembalian otomatis, rekap harian, plus menu owner dan pegawai yang dipisah.</dd></div>
+</dl>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:24px"><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">5 menit</b><span style="font-size:13px;color:#4A555E">rekap harian (dulu 1 jam)</span></div><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">0</b><span style="font-size:13px;color:#4A555E">salah hitung kembalian</span></div><div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">58 mm</b><span style="font-size:13px;color:#4A555E">struk langsung dari printer</span></div></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px"></div>
+</div><div style="flex:1.4 1 480px;min-width:0;background:#FFE3CF;border-radius:28px;padding:clamp(18px,3vw,32px) clamp(18px,3vw,32px) clamp(40px,6vw,72px);position:relative">
+<div style="border-radius:22px;background:#1C2125;padding:12px;box-shadow:0 24px 40px -20px rgba(38,44,49,0.6)">
+<div style="border-radius:12px;overflow:hidden;background:#FFFFFF"><img src="/assets/v2/pos-kasir.webp" alt="Layar kasir Warkop Titik Hoki di tablet" style="width:100%;display:block"></div>
+</div>
+<div class="posstruk" style="position:absolute;right:clamp(8px,3vw,28px);bottom:-18px;width:clamp(120px,26%,190px);background:#FFFFFF;padding:8px 6px 14px;border-radius:4px;box-shadow:0 18px 30px -10px rgba(38,44,49,0.45);transform:rotate(4deg)">
+<img src="/assets/v2/pos-struk.webp" alt="Contoh struk Warkop Titik Hoki" style="width:100%;display:block">
+</div>
+</div>
+</article>
+</sc-if>
+
+<!-- 4. Convera -->
+<sc-if value="{{cs3}}" hint-placeholder-val="{{false}}">
+<article class="chip" style="margin-top:36px;background:#FFFFFF;border-radius:36px;padding:clamp(24px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+<div style="flex:1 1 400px;min-width:0">
+<p style="margin:0;font-size:14px;font-weight:700;color:#D9601A;letter-spacing:0.04em">PRODUK KAMI · IKLAN KE WHATSAPP</p>
+<h3 style="margin:8px 0 0;font-size:34px;font-weight:700;letter-spacing:-0.02em">Convera</h3>
+<dl style="margin:24px 0 0;display:flex;flex-direction:column;gap:16px;font-size:16px">
+<div><dt style="font-weight:700">Masalahnya</dt><dd style="margin:4px 0 0;color:#4A555E">Udah pasang iklan di Facebook dan Instagram, tapi gak tau iklan mana yang bikin orang chat WA, apalagi yang sampai beli.</dd></div>
+<div><dt style="font-weight:700">Yang kami buat</dt><dd style="margin:4px 0 0;color:#4A555E">Dashboard yang nyambungin chat WA ke iklannya. Kelihatan iklan mana yang menghasilkan pembeli, dan datanya dikirim balik ke Meta supaya iklan makin tepat sasaran.</dd></div>
+</dl>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:24px">
+<div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">-50%</b><span style="font-size:13px;color:#4A555E">biaya per hasil iklan</span></div>
+<div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">Rp7rb</b><span style="font-size:13px;color:#4A555E">per hasil iklan Meta, dulu Rp14rb</span></div>
+<div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">1</b><span style="font-size:13px;color:#4A555E">dashboard buat semua iklan</span></div>
+</div>
+</div>
+<div style="flex:1.3 1 460px;min-width:0;background:#FFE3CF;border-radius:28px;padding:28px">
+<div style="border-radius:16px;overflow:hidden;background:#FFFFFF;box-shadow:0 20px 40px -20px rgba(38,44,49,0.4)">
+<div style="display:flex;align-items:center;gap:6px;padding:10px 14px;background:#262C31"><span style="width:10px;height:10px;border-radius:50%;background:#FF5F57"></span><span style="width:10px;height:10px;border-radius:50%;background:#FEBC2E"></span><span style="width:10px;height:10px;border-radius:50%;background:#28C840"></span><span style="margin-left:10px;color:#D2DADF;font-size:12px">convera · Overview</span></div>
+<img src="/assets/v2/ss-convera.webp" alt="Dashboard Convera" style="width:100%;display:block">
+</div>
+</div>
+</article>
+</sc-if>
+
+<!-- 5. Chatbot toko baju -->
+<sc-if value="{{cs4}}" hint-placeholder-val="{{false}}">
+<article class="chip" style="margin-top:36px;background:#FFFFFF;border-radius:36px;padding:clamp(24px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+<div style="flex:1 1 400px;min-width:0">
+<p style="margin:0;font-size:14px;font-weight:700;color:#D9601A;letter-spacing:0.04em">CHATBOT WA · TOKO ONLINE</p>
+<h3 style="margin:8px 0 0;font-size:34px;font-weight:700;letter-spacing:-0.02em">Bot Toko Baju Rina</h3>
+<dl style="margin:24px 0 0;display:flex;flex-direction:column;gap:16px;font-size:16px">
+<div><dt style="font-weight:700">Masalahnya</dt><dd style="margin:4px 0 0;color:#4A555E">80-an chat per hari, admin cuma satu. Banyak pembeli kabur karena kelamaan dibales.</dd></div>
+<div><dt style="font-weight:700">Yang kami buat</dt><dd style="margin:4px 0 0;color:#4A555E">Bot WA pakai AI yang jawab stok dan harga langsung dari Google Sheets. Pesanan otomatis masuk tabel, admin tinggal packing.</dd></div>
+</dl>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:24px">
+<div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">&lt;10 dtk</b><span style="font-size:13px;color:#4A555E">waktu balas chat</span></div>
+<div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">+35%</b><span style="font-size:13px;color:#4A555E">pesanan per bulan</span></div>
+<div style="background:#FFF6EE;border-radius:20px;padding:16px"><b style="display:block;font-size:26px;letter-spacing:-0.02em">24 jam</b><span style="font-size:13px;color:#4A555E">jalan tanpa admin</span></div>
+</div>
+</div>
+<div style="flex:1.3 1 460px;min-width:0;background:#FFE3CF;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="border-radius:16px;overflow:hidden;background:#FFFFFF;box-shadow:0 20px 40px -20px rgba(38,44,49,0.4)">
+<div style="display:flex;align-items:center;gap:6px;padding:10px 14px;background:#262C31"><span style="width:10px;height:10px;border-radius:50%;background:#FF5F57"></span><span style="width:10px;height:10px;border-radius:50%;background:#FEBC2E"></span><span style="width:10px;height:10px;border-radius:50%;background:#28C840"></span><span style="margin-left:10px;color:#D2DADF;font-size:12px">n8n · Workflow bot</span></div>
+<img src="/assets/v2/ss-chat.webp" alt="Workflow bot di n8n" style="width:100%;display:block">
+</div>
+<div style="border-radius:16px;overflow:hidden;background:#FFFFFF;box-shadow:0 20px 40px -20px rgba(38,44,49,0.4);width:70%;align-self:flex-end;margin-top:-60px">
+<div style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:#262C31"><span style="color:#D2DADF;font-size:11px">Google Sheets · Pesanan</span></div>
+<img src="/assets/v2/ss-sheets.webp" alt="Tabel pesanan di Google Sheets" style="width:100%;display:block">
+</div>
+</div>
+</article>
+</sc-if>
+
+</div>
+</section>
+
+
+<!-- KATA MEREKA -->
+<section style="padding:104px 0">
+<div style="max-width:1240px;margin:0 auto;padding:0 28px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px">
+<h2 class="reveal" style="margin:0;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-0.025em;font-weight:700">Chat dari klien kami</h2>
+<div style="display:flex;gap:10px">
+<button type="button" onClick="{{prev}}" aria-label="Sebelumnya" style="width:52px;height:52px;border-radius:50%;border:2px solid #262C31;background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#262C31" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+<button type="button" onClick="{{next}}" aria-label="Berikutnya" style="width:52px;height:52px;border-radius:50%;border:none;background:#262C31;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;align-items:stretch">
+<div style="flex:0 1 240px;min-width:0;display:flex;justify-content:center;align-items:flex-end">
+<img src="/assets/v2/pose-jempol.webp" alt="Maskot mengangkat jempol" style="height:380px;object-fit:contain;display:block">
+</div>
+<div style="flex:1 1 640px;min-width:0;overflow:hidden">
+<div class="ttrack" style="{{trackStyle}}">
+<sc-for list="{{testi}}" as="t" hint-placeholder-count="4">
+<figure class="tcard" style="margin:0;display:flex;flex-direction:column;gap:12px">
+<div style="border-radius:28px;overflow:hidden;background:#EFEAE2;box-shadow:0 20px 40px -24px rgba(38,44,49,0.45);display:flex;flex-direction:column;min-height:400px">
+<div style="background:#075E54;color:#FFFFFF;padding:14px 16px;display:flex;align-items:center;gap:12px">
+<span class="blurname" style="width:40px;height:40px;border-radius:50%;background:{{t.avatar}};flex:none"></span>
+<span style="line-height:1.25"><b class="blurname" style="font-size:15px;display:inline-block">{{t.name}}</b><br><span style="font-size:12px;opacity:0.85">{{t.biz}}</span></span>
+</div>
+<div style="flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45">
+<span style="align-self:center;background:#FFFFFF;color:#4A555E;font-size:11px;padding:3px 10px;border-radius:8px">{{t.day}}</span>
+<sc-for list="{{t.msgs}}" as="m" hint-placeholder-count="4">
+<div style="{{m.style}}">{{m.text}}<span style="display:flex;justify-content:flex-end;align-items:center;gap:4px;font-size:11px;color:#667781;margin-top:2px">{{m.time}}<sc-if value="{{m.me}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="#53BDEB" stroke-width="1.6" stroke-linecap="round"><path d="M1 5l3 3 6-7M6 8l1 1 6-8"/></svg></sc-if></span></div>
+</sc-for>
+</div>
+</div>
+<figcaption style="font-size:14px;color:#4A555E;padding:0 8px"><b style="color:#262C31">{{t.biz}}</b> · nama disamarkan atas izin klien</figcaption>
+</figure>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:8px;justify-content:center;margin-top:28px">
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="4">
+<button type="button" onClick="{{d.pick}}" aria-label="{{d.label}}" style="border:none;background:none;padding:8px 2px;cursor:pointer"><span style="{{d.style}}"></span></button>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="bantuan" style="background:#FFF6EE;padding:104px 0">
+<div style="max-width:1180px;margin:0 auto;padding:0 28px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+<div style="flex:1 1 300px;min-width:0;text-align:center">
+<h2 class="reveal" style="margin:0;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-0.025em;font-weight:700">Masih ragu?<br>Wajar kok.</h2>
+<img class="wiggle" src="/assets/v2/pose-bingung.webp" alt="Maskot menggaruk kepala dengan tanda tanya" style="height:400px;margin-top:20px;object-fit:contain">
+</div>
+<div style="flex:1.8 1 520px;min-width:0;display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="6">
+<div style="background:#FFFFFF;border-radius:24px;overflow:hidden">
+<h3 style="margin:0">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.open}}" style="width:100%;min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 28px;background:none;border:none;text-align:left;font-size:19px;font-weight:600;color:#262C31;cursor:pointer">
+<span>{{f.q}}</span>
+<span aria-hidden="true" style="{{f.iconStyle}}">+</span>
+</button>
+</h3>
+<div style="{{f.panelStyle}}"><div style="overflow:hidden"><p style="margin:0;padding:0 28px 24px;color:#3A454E;font-size:17px">{{f.a}}</p></div></div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="background:#262C31;padding:24px 0 0;overflow:hidden">
+<div style="max-width:1180px;margin:0 auto;padding:0 28px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px">
+<div style="flex:1 1 300px;min-width:0;display:flex;justify-content:center;position:relative">
+<div style="position:absolute;bottom:-120px;width:420px;height:420px;border-radius:50%;background:#EF7A30;opacity:0.22"></div>
+<img src="/assets/v2/pose-melambai.webp" alt="Maskot melambai sambil memegang HP" style="position:relative;height:460px;max-width:100%;object-fit:contain;display:block">
+</div>
+<div style="flex:1.3 1 420px;min-width:0;padding:64px 0 96px;color:#FFFFFF">
+<h2 class="reveal" style="margin:0;font-size:clamp(36px,4.6vw,60px);line-height:1.05;letter-spacing:-0.03em;font-weight:700">Bingung mulai dari mana?<br><span style="color:#EF7A30">Chat aja dulu.</span></h2>
+<p style="margin:20px 0 0;font-size:19px;color:#D2DADF;max-width:460px">Langsung ngobrol sama tim kami, bukan bot. Cerita aja masalahnya.</p>
+<a class="btn pulse" href="{{waLink}}" target="_blank" rel="noopener" style="margin-top:32px;display:inline-flex;align-items:center;gap:12px;min-height:58px;padding:14px 30px;border-radius:999px;background:#25D366;color:#262C31;text-decoration:none;font-weight:700;font-size:19px">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" style="color:#262C31;flex:none"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg>
+Chat 0812-9573-1556
+</a>
+<ul style="list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:#D2DADF"><li style="display:flex;align-items:center;gap:6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DD3A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>Gratis konsultasi</li><li style="display:flex;align-items:center;gap:6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DD3A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>Gak ada paksaan beli</li><li style="display:flex;align-items:center;gap:6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DD3A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="20 6 9 17 4 12"/></svg>Dibales ±15 menit, Senin–Sabtu 09.00–21.00</li></ul>
+<p style="margin:28px 0 12px;font-size:15px;color:#D2DADF">Atau ikutin kami di</p>
+<div style="display:flex;gap:10px"><a class="btn" href="{{igLink}}" target="_blank" rel="noopener" aria-label="Instagram dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#FFFFFF" stroke="none"/></svg></a><a class="btn" href="{{ttLink}}" target="_blank" rel="noopener" aria-label="TikTok dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M16.6 2c.4 2.5 2 4.1 4.4 4.3v3.4c-1.6 0-3.1-.5-4.3-1.3v6.8a6.5 6.5 0 1 1-6.5-6.5h.6v3.5a3 3 0 1 0 2.4 2.9V2z"/></svg></a><a class="btn" href="{{ytLink}}" target="_blank" rel="noopener" aria-label="YouTube dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><rect x="1.5" y="5" width="21" height="14" rx="4.5" fill="#FFFFFF"/><path d="M10 9l5.5 3-5.5 3z" fill="#1C2125"/></svg></a><a class="btn" href="{{waLink}}" target="_blank" rel="noopener" aria-label="WhatsApp dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="color:#FFFFFF"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg></a><a class="btn" href="{{mailLink}}" target="_blank" rel="noopener" aria-label="Email dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></a></div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1C2125;color:#D2DADF">
+<div style="max-width:1180px;margin:0 auto;padding:56px 28px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+<div style="max-width:320px">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:40px;height:40px;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><img src="/assets/v2/logo.webp" alt="" style="width:30px;height:30px"></span>
+<span style="font-weight:700;font-size:21px;color:#FFFFFF">dicodingin<span style="color:#EF7A30">AJA</span></span>
+</div>
+<p style="margin:16px 0 0;font-size:15px">#BiarSistemYangKerja</p>
+<div style="display:flex;gap:10px;margin-top:20px"><a class="btn" href="{{igLink}}" target="_blank" rel="noopener" aria-label="Instagram dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#FFFFFF" stroke="none"/></svg></a><a class="btn" href="{{ttLink}}" target="_blank" rel="noopener" aria-label="TikTok dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M16.6 2c.4 2.5 2 4.1 4.4 4.3v3.4c-1.6 0-3.1-.5-4.3-1.3v6.8a6.5 6.5 0 1 1-6.5-6.5h.6v3.5a3 3 0 1 0 2.4 2.9V2z"/></svg></a><a class="btn" href="{{ytLink}}" target="_blank" rel="noopener" aria-label="YouTube dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><rect x="1.5" y="5" width="21" height="14" rx="4.5" fill="#FFFFFF"/><path d="M10 9l5.5 3-5.5 3z" fill="#1C2125"/></svg></a><a class="btn" href="{{waLink}}" target="_blank" rel="noopener" aria-label="WhatsApp dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="color:#FFFFFF"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1.1 1.6c.2.3.2.7-.1 1l-.6.6c.6 1.3 1.7 2.4 3 3l.6-.6c.3-.3.7-.3 1-.1l1.6 1.1c.4.2.4.7.1 1l-.8.8c-.6.6-1.5.8-2.3.4-2.2-1-4.1-2.9-5.1-5.1-.4-.8-.2-1.7.4-2.3z" fill="currentColor"/></svg></a><a class="btn" href="{{mailLink}}" target="_blank" rel="noopener" aria-label="Email dicodinginAJA" style="width:46px;height:46px;border-radius:50%;background:#353C42;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></a></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:56px;font-size:15px">
+<div><b style="display:block;color:#FFFFFF;margin-bottom:12px">Layanan</b>
+<div style="display:flex;flex-direction:column;gap:8px">
+<a href="#layanan" style="color:#D2DADF;text-decoration:none">Chatbot WhatsApp</a>
+<a href="#layanan" style="color:#D2DADF;text-decoration:none">Catat pesanan</a>
+<a href="#layanan" style="color:#D2DADF;text-decoration:none">Convera</a>
+</div></div>
+<div><b style="display:block;color:#FFFFFF;margin-bottom:12px">Bantuan</b>
+<div style="display:flex;flex-direction:column;gap:8px">
+<a href="#layanan" style="color:#D2DADF;text-decoration:none">Harga</a>
+<a href="#bantuan" style="color:#D2DADF;text-decoration:none">Tanya jawab</a>
+<a href="{{waLink}}" target="_blank" rel="noopener" style="color:#D2DADF;text-decoration:none">WA 0812-9573-1556</a>
+</div></div>
+</div>
+</div>
+<div style="max-width:1180px;margin:0 auto;padding:20px 28px 32px;border-top:1px solid #3A4249;font-size:14px">© 2026 dicodinginAJA</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"autoplay":{"editor":"boolean","default":true},"igLink":{"editor":"text","default":"#","section":"Link sosmed"},"ttLink":{"editor":"text","default":"#","section":"Link sosmed"},"ytLink":{"editor":"text","default":"#","section":"Link sosmed"},"mailLink":{"editor":"text","default":"mailto:halo@dicodinginaja.com","section":"Link sosmed"},"$preview":{"width":1440,"height":8000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { gal: 0, hero: 0, slide: 0, faqOpen: 0, step: 10, cs: 0, count: 0, execs: 1284, view: 'products', rot: 0, instant: false, cat: 'Semua', n8nScale: 0.86 };
+  }
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const auto = (this.props.autoplay ?? true) && !reduce;
+    if (auto) {
+      this.t1 = setInterval(() => this.setState({ hero: (this.state.hero + 1) % 4 }), 4500);
+      this.t2 = setInterval(() => this.tickDemo(), 850);
+      this.t5 = setInterval(() => this.setState({ gal: (this.state.gal + 1) % 4 }), 3200);
+      this.t3 = setInterval(() => this.setState({ slide: (this.state.slide + 1) % 3 }), 6000);
+    }
+    const start = () => {
+      if (this.started) return; this.started = true;
+      if (reduce) { this.setState({ count: 1 }); return; }
+      const t0 = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / 1600);
+        this.setState({ count: 1 - Math.pow(1 - p, 3) });
+        if (p < 1) this.raf = requestAnimationFrame(step);
+      };
+      this.raf = requestAnimationFrame(step);
+    };
+    const fit = document.getElementById('n8nfit');
+    if (fit && 'ResizeObserver' in window) {
+      this.ro = new ResizeObserver((es) => { const w = es[0].contentRect.width; if (w > 0) this.setState({ n8nScale: Math.min(1.25, w / 900) }); });
+      this.ro.observe(fit);
+    }
+    const el = document.getElementById('angka');
+    if (el && 'IntersectionObserver' in window) {
+      this.io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) start(); }, { threshold: 0.3 });
+      this.io.observe(el);
+    } else { start(); }
+  }
+  componentWillUnmount() {
+    [this.t1, this.t2, this.t3, this.t5].forEach((t) => t && clearInterval(t));
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.io) this.io.disconnect();
+    if (this.ro) this.ro.disconnect();
+    (this.ft || []).forEach((t) => clearTimeout(t));
+  }
+  flipTo(view) {
+    if (this.state.view === view || this.flipping) return;
+    this.flipping = true;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ view: view }); this.flipping = false; return; }
+    this.ft = [];
+    this.setState({ instant: false, rot: 90 });
+    this.ft.push(setTimeout(() => {
+      this.setState({ view: view, instant: true, rot: -90 });
+      const sec = document.getElementById('layanan');
+      if (sec && sec.getBoundingClientRect().top < 0) sec.scrollIntoView({ behavior: 'smooth' });
+      this.ft.push(setTimeout(() => { this.setState({ instant: false, rot: 0 }); this.flipping = false; }, 40));
+    }, 320));
+  }
+  tickDemo() {
+    const n = (this.state.step + 1) % 14;
+    const o = { step: n };
+    if (n === 10) o.execs = this.state.execs + 1;
+    this.setState(o);
+  }
+  restart(key, ms, n) {
+    const map = { hero: 't1', slide: 't3' };
+    const k = map[key];
+    if (this[k]) { clearInterval(this[k]); this[k] = setInterval(() => { const o = {}; o[key] = (this.state[key] + 1) % n; this.setState(o); }, ms); }
+  }
+  renderVals() {
+    const wa = (t) => 'https://wa.me/6281295731556?text=' + encodeURIComponent(t);
+    const fade = (on) => 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.9s ease, transform 5s ease;' + (on ? 'opacity:1;transform:scale(1.06)' : 'opacity:0;transform:scale(1)');
+    const heroData = [
+      { l1: 'Biar Sistem', l2: 'yang Kerja.', q: 'Kak, cabai rawit masih ada?', r: 'Ada kak, Rp8.000 per ons. Mau berapa?', t: '06.12', pill: 'Dibales dalam 3 detik' },
+      { l1: 'Chat Dibales,', l2: 'Kamu Rebahan.', q: 'Masih buka, Kak?', r: 'Toko udah tutup kak, tapi pesanannya tetap bisa dicatat. Mau pesan apa?', t: '23.58', pill: 'Dibales walau kamu tidur' },
+      { l1: 'Pesanan Masuk,', l2: 'Auto Kecatat.', q: 'Saya pesan 2 kaos hitam size L ya', r: 'Siap! Totalnya Rp178.000. Mau dikirim ke mana kak?', t: '10.41', pill: 'Masuk ke Google Sheets' },
+      { l1: 'Iklan Hemat,', l2: 'Untung Naik.', q: 'Lihat iklan di IG, promonya masih ada?', r: 'Masih kak! Diskon 20% sampai Minggu.', t: '19.05', pill: 'Kelacak dari iklan Meta' }
+    ];
+    const h = this.state.hero;
+    const heroLines = heroData.map((d, i) => ({ l1: d.l1, l2: d.l2, active: i === h }));
+    const heroChip = heroData.map((d, i) => ({ q: d.q, r: d.r, t: d.t, pill: d.pill, active: i === h }));
+    const heroDots = heroData.map((d, i) => ({ label: 'Tampilkan tagline ' + (i + 1), active: i === h, done: i < h, pick: () => { this.setState({ hero: i }); this.restart('hero', 4500, 4); } }));
+    const c = this.state.count;
+    const n1 = Math.round(500 * c) + '+';
+    const n2 = (1.2 * c).toFixed(1).replace('.', ',') + ' juta+';
+    const n3 = Math.round(8 * c) + ' jam';
+    const n4 = (4.9 * c).toFixed(1).replace('.', ',') + '/5';
+    const k = this.state.step;
+    const ph = (run, done) => ({ run: run, done: done });
+    const boxCss = (st, radius, w, h, round) => 'position:relative;width:' + w + ';height:' + h + ';border-radius:' + radius + ';background:#3A3E44;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s,box-shadow 0.3s;' + (st.run ? 'border:2px solid #FF9B45;box-shadow:0 0 0 6px rgba(255,155,69,0.18)' : st.done ? 'border:2px solid #3FB950' : 'border:2px solid #64696F');
+    const tr = ph(k === 1, k >= 2), ag = ph(k >= 3 && k <= 5, k >= 6), sh = ph(k === 7, k >= 8), sd = ph(k === 9, k >= 10);
+    const sub = (i) => ph(k === 3 + i, k >= 4 + i);
+    const nTrig = Object.assign({ box: boxCss(tr, '55px 16px 16px 55px', '110px', '110px') }, tr);
+    const nAgent = Object.assign({ box: boxCss(ag, '16px', '230px', '110px') }, ag);
+    const nSheet = Object.assign({ box: boxCss(sh, '16px', '110px', '110px') }, sh);
+    const nSend = Object.assign({ box: boxCss(sd, '16px', '110px', '110px') }, sd);
+    const sModel = { box: boxCss(sub(0), '50%', '64px', '64px') };
+    const sMem = { box: boxCss(sub(1), '50%', '64px', '64px') };
+    const sTool = { box: boxCss(sub(2), '50%', '64px', '64px') };
+    const edge = (on) => ({ cls: on ? 'flow' : '', done: on, st: on ? 'stroke:#3FB950;stroke-width:2.5' : 'stroke:#6B7078;stroke-width:2', fill: on ? 'fill:#3FB950' : 'fill:#6B7078' });
+    const subLine = (i) => (k >= 3 + i ? 'stroke:#3FB950;stroke-width:2' : 'stroke:#6B7078;stroke-width:1.5');
+    const g = this.state.gal;
+    const fadeImg = (on, pos) => 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:' + (pos || 'top') + ';display:block;transition:opacity 0.7s ease;opacity:' + (on ? 1 : 0);
+    const webDefs = [['web-hero.webp', 'Halaman utama website INI Best Home'], ['web-fitur.webp', 'Bagian fitur aplikasi di website'], ['web-member.webp', 'Bagian member dan langganan'], ['web-cta.webp', 'Bagian ajakan download dan footer']];
+    const wi = g % 4;
+    const webShots = webDefs.map((d, i) => ({ src: '/assets/v2/' + d[0], alt: d[1], style: fadeImg(i === wi) }));
+    const webDots = webDefs.map((d, i) => ({ label: d[1], style: 'display:block;height:10px;border-radius:999px;transition:width 0.3s,background 0.3s;' + (i === wi ? 'width:28px;background:#D9601A' : 'width:10px;background:#F2C9AE'), pick: () => this.setState({ gal: i }) }));
+    const andDefs = [['app-home-and.webp', 'Beranda aplikasi di Android'], ['app-paket-and.webp', 'Daftar paket layanan'], ['app-profil-and.webp', 'Halaman profil pelanggan'], ['app-login-and.webp', 'Halaman masuk akun']];
+    const andShots = andDefs.map((d, i) => ({ src: '/assets/v2/' + d[0], alt: d[1], style: fadeImg(i === g % 4) }));
+    const iosDefs = [['app-splash-ios.webp', 'Layar pembuka aplikasi di iPhone', '#2B2418', '#FFFFFF'], ['app-detail-ios.webp', 'Detail layanan Full Body Massage', '#5B4A3E', '#FFFFFF'], ['app-paket-ios.webp', 'Daftar paket layanan', '#FDFBF8', '#262C31'], ['app-home-ios.webp', 'Beranda aplikasi di iPhone', '#3A2F22', '#FFFFFF']];
+    const ii = (g + 2) % 4;
+    const iosShots = iosDefs.map((d, i) => ({ src: '/assets/v2/' + d[0], alt: d[1],
+      wrap: 'position:absolute;inset:0;transition:opacity 0.7s ease;opacity:' + (i === ii ? 1 : 0) + ';background:' + d[2],
+      bar: 'position:absolute;left:0;right:0;top:0;height:38px;padding:10px 20px 0 24px;display:flex;justify-content:space-between;align-items:flex-start;background:' + d[2] + ';color:' + d[3] + ';z-index:1' }));
+    const csDefs = ['Website', 'Mobile App', 'POS', 'Convera', 'Chatbot'];
+    const ci = this.state.cs;
+    const csTabs = csDefs.map((l, i) => ({
+      label: l, selected: i === ci ? 'true' : 'false',
+      style: 'min-height:48px;padding:12px 22px;border-radius:999px;font-size:16px;font-weight:600;cursor:pointer;transition:background 0.3s,color 0.3s;' + (i === ci ? 'background:#262C31;color:#FFFFFF;border:2px solid #262C31' : 'background:#FFFFFF;color:#262C31;border:2px solid #F2C9AE'),
+      pick: () => this.setState({ cs: i })
+    }));
+    const prodDefs = [
+      ['Automation', 'Unduh instan', 'Logger WhatsApp ke Google Sheets', 'Setiap chat yang masuk otomatis tercatat ke spreadsheet.', ['File alur n8n siap pakai', 'Panduan pasang (PDF)', 'Contoh sheet tinggal salin'], 'Rp200.000', '+ pasang Rp150.000'],
+      ['Chatbot', '1–3 hari', 'Chatbot WhatsApp dengan Menu', 'Balasan otomatis bertingkat buat FAQ, katalog, dan jam buka.', ['Sampai 10 menu dan sub-menu', 'Dipasang dan dicoba bareng', 'Panduan ubah isi menu'], 'Rp650.000', 'Termasuk pemasangan'],
+      ['Convera', 'Sesuai kebutuhan', 'Convera Ads Intelligence', 'Hubungkan iklan dengan penjualan, biar ketauan iklan mana yang beneran ngasilin.', ['Lacak iklan sampai jadi pembeli', 'Dashboard performa iklan', 'Data siap buat ambil keputusan'], 'Rp150.000', 'Paket Essential sampai Enterprise'],
+      ['Chatbot', 'Unduh instan', 'Bot Telegram Notifikasi Pesanan', 'Kirim notifikasi ke grup tim tiap ada pesanan atau form baru.', ['Template bot siap pakai', 'Format pesan bisa diubah', 'Panduan pasang (PDF)'], 'Rp250.000', '+ pasang Rp150.000'],
+      ['Automation', 'Unduh instan', 'Sheet Stok dan Inventori', 'Stok masuk-keluar, peringatan stok menipis, dan rekap bulanan.', ['Template Google Sheets', 'Peringatan stok otomatis', 'Video panduan singkat'], 'Rp150.000', 'Template saja'],
+      ['Automation', 'Unduh instan', 'Invoice Otomatis ke Email', 'Isi satu baris di Sheets, invoice PDF langsung terkirim ke pelanggan.', ['Template invoice dan Sheets', 'Kirim email otomatis', 'Panduan pasang (PDF)'], 'Rp250.000', '+ pasang Rp150.000'],
+      ['Chatbot', '± 5 hari', 'Paket Chatbot AI WhatsApp', 'WhatsApp dijawab AI yang paham produkmu, chat tercatat di Sheets.', ['Bisa terima teks, foto, dan file', '1x revisi dan buku panduan', 'Dipasang dan dicoba bareng'], 'Rp1.500.000', 'Termasuk pemasangan'],
+      ['Website', 'Sesuai kebutuhan', 'Website dan Web Platform', 'Dari landing page sampai aplikasi web dengan login dan dashboard.', ['Landing page dan company profile', 'Web app dengan login', 'Rapi di HP dan laptop'], 'Tanya harga', 'Sesuai cakupan'],
+      ['Mobile', 'Sesuai kebutuhan', 'Aplikasi Android dan iOS', 'Aplikasi buat pelanggan, tim internal, atau operasional usaha.', ['Satu aplikasi buat Android dan iOS', 'Fitur dasar sampai custom', 'Rilis dan perawatan'], 'Tanya harga', 'Essential sampai Custom'],
+      ['POS', 'Sesuai kebutuhan', 'Sistem Kasir dan Toko', 'Kasir dan operasional toko, dari satu outlet sampai banyak cabang.', ['Kasir, produk, dan stok', 'Laporan per outlet dan cabang', 'Bisa pakai Odoo buat skala besar'], 'Tanya harga', 'Lite sampai Enterprise'],
+      ['Chatbot', 'Sesuai kebutuhan', 'Chatbot Banyak Channel', 'Satu bot buat WhatsApp, marketplace, website, atau server sendiri.', ['FAQ dan katalog otomatis', 'WhatsApp, marketplace, website', 'Bisa di server sendiri'], 'Tanya harga', 'Sesuai channel'],
+      ['Automation', 'Sesuai kebutuhan', 'Otomasi Google Sheets', 'Spreadsheet yang bantu input, cek data, notifikasi, dan laporan jalan sendiri.', ['Google Sheets dan Apps Script', 'Notifikasi dan persetujuan', 'Dari template sampai custom'], 'Tanya harga', 'Essential sampai Custom'],
+      ['Finance', 'Sesuai kebutuhan', 'Otomasi Keuangan', 'Kurangi kerjaan rekap, laporan keuangan tersusun dari data yang ada.', ['Rekap pemasukan dan pengeluaran', 'Invoice dan laporan berkala', 'Ekspor buat kebutuhan finance'], 'Tanya harga', 'Essential sampai Custom'],
+      ['Security', 'Sesuai kebutuhan', 'Keamanan Sistem', 'Temukan celah, uji sistem, dan latih tim biar gak gampang kena tipu.', ['Cek celah keamanan', 'Uji penetrasi (pentest)', 'Pelatihan anti-phishing'], 'Tanya harga', 'Cek sampai pelatihan']
+    ];
+    const cats = ['Semua', 'Chatbot', 'Automation', 'Convera', 'Website', 'Mobile', 'POS', 'Finance', 'Security'];
+    const catLabel = { Semua: 'Semua', Chatbot: 'Chatbot', Automation: 'Otomasi', Convera: 'Convera', Website: 'Website', Mobile: 'Aplikasi HP', POS: 'Kasir', Finance: 'Keuangan', Security: 'Keamanan' };
+    const thumbBg = { Chatbot: '#FFE3CF', Automation: '#FFF6EE', Convera: '#EF7A30', Website: '#F2E4D8', Mobile: '#FFE3CF', POS: '#FFF6EE', Finance: '#F2E4D8', Security: '#FFD2B3' };
+    const cur = this.state.cat;
+    const catChips = cats.map((c) => ({
+      label: catLabel[c], on: c === cur ? 'true' : 'false',
+      style: 'min-height:42px;padding:8px 18px;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.25s,color 0.25s;' + (c === cur ? 'background:#EF7A30;color:#262C31;border:1.5px solid #EF7A30' : 'background:transparent;color:#FFFFFF;border:1.5px solid #4A535A'),
+      pick: () => this.setState({ cat: c })
+    }));
+    const products = prodDefs.filter((d) => cur === 'Semua' || d[0] === cur).map((d) => ({
+      cat: catLabel[d[0]], badge: d[1], name: d[2], desc: d[3], points: d[4].map((t) => ({ t: t })),
+      price: d[5], note: d[6], priceLabel: d[5] === 'Tanya harga' ? 'Harga' : 'Mulai dari',
+      thumb: 'position:relative;height:150px;display:flex;align-items:center;justify-content:center;background-color:' + thumbBg[d[0]] + ';background-image:repeating-linear-gradient(135deg,rgba(38,44,49,0.05) 0 2px,transparent 2px 14px)',
+      wa: wa('Halo dicodinginAJA, saya mau pesan ' + d[2] + '. Bisa dibantu?'),
+      iAuto: d[0] === 'Automation', iChat: d[0] === 'Chatbot', iConvera: d[0] === 'Convera', iWeb: d[0] === 'Website', iMobile: d[0] === 'Mobile', iPos: d[0] === 'POS', iFinance: d[0] === 'Finance', iSecurity: d[0] === 'Security'
+    }));
+    const flipStyle = 'transform:perspective(2400px) rotateY(' + this.state.rot + 'deg);transform-origin:50% 0;' + (this.state.instant ? 'transition:none' : 'transition:transform 0.32s cubic-bezier(.4,0,.2,1)');
+    const sc = this.state.n8nScale;
+    const cc = this.state.count;
+    const bubbleThem = 'align-self:flex-start;max-width:86%;background:#FFFFFF;padding:7px 10px 4px;border-radius:4px 12px 12px 12px';
+    const bubbleMe = 'align-self:flex-end;max-width:86%;background:#D9FDD3;padding:7px 10px 4px;border-radius:12px 4px 12px 12px';
+    const mk = (arr) => arr.map((m) => ({ text: m[1], time: m[2], me: m[0] === 'me', style: m[0] === 'me' ? bubbleMe : bubbleThem }));
+    const testiAll = [
+      { name: 'Pak Budi Santoso', biz: 'Laundry kiloan, Depok', day: 'Kemarin', avatar: '#C8A27A', msgs: mk([
+        ['them', 'Kak mau bilang makasih. Semalem ada 30an chat masuk pas saya tidur, kebales semua sama botnya', '06.12'],
+        ['them', 'Pagi tinggal liat tabel, udah rapi semua', '06.12'],
+        ['me', 'Wah ikut seneng Pak! Kalau ada balasan yang mau diubah, kabarin aja ya', '07.30'],
+        ['them', 'Siap kak, mantap pokoknya', '07.31']]) },
+      { name: 'Rina Kartika', biz: 'Toko baju online, Bekasi', day: 'Senin', avatar: '#E8A0B4', msgs: mk([
+        ['them', 'Kak minggu ini orderan naik lumayan loh', '20.05'],
+        ['them', 'Pembeli gak nunggu lama lagi, admin aku jadi bisa fokus packing', '20.05'],
+        ['me', 'Mantap Kak! Mau sekalian dibikinin rekap mingguan otomatis?', '20.11'],
+        ['them', 'Boleh bgt kak, kabarin harganya ya', '20.12']]) },
+      { name: 'Bang Yoga', biz: 'Warkop, Gading Serpong', day: 'Sabtu', avatar: '#9CB7D4', msgs: mk([
+        ['them', 'Bang kasirnya enak bgt, rekap malem tinggal klik doang', '23.40'],
+        ['them', 'Dulu bisa sejam ngitung, sekarang 5 menit beres', '23.40'],
+        ['me', 'Siap bang, semoga makin laris!', '23.52']]) },
+      { name: 'Bu Sari Wulandari', biz: 'Salon kecantikan, Tangerang', day: '12/11/2026', avatar: '#B9A6E0', msgs: mk([
+        ['them', 'Kak pengingat booking otomatisnya ngebantu banget', '10.02'],
+        ['them', 'Pelanggan udah jarang lupa jadwal, gak ada yang batal mendadak lagi', '10.03'],
+        ['me', 'Senang dengernya Bu! Makasih udah percaya sama kami', '10.15']]) }
+    ];
+    const pages = testiAll.length - 1;
+    const s = this.state.slide;
+    const testi = testiAll;
+    const trackStyle = 'display:flex;gap:24px;transform:translateX(calc(-1 * ' + s + ' * var(--step)))';
+    const dots = Array.from({ length: pages }, (_, i) => ({
+      label: 'Testimoni ' + (i + 1),
+      style: 'display:block;height:10px;border-radius:999px;transition:width 0.3s,background 0.3s;' + (i === s ? 'width:28px;background:#EF7A30' : 'width:10px;background:#F2C9AE'),
+      pick: () => { this.setState({ slide: i }); this.restart('slide', 5200, pages); }
+    }));
+    const faqDefs = [
+      ['Saya gaptek. Bisa pakai gak?', 'Bisa banget. Kamu cukup chat kami kayak biasa. Pasangnya kami yang urus, terus kamu diajarin pelan-pelan sampai bisa.'],
+      ['Nomor WA saya masih bisa dipakai biasa?', 'Bisa. Kalau buat bot perlu nomor terpisah, kami kasih tau dari awal dan bantu siapin.'],
+      ['Ada biaya bulanan gak?', 'Tergantung layanannya. Kalau ada, kami kasih tau jumlahnya di awal. Gak ada biaya kejutan.'],
+      ['Kalau botnya error, gimana?', 'Chat kami aja. Ada garansi perbaikan, jadi kami yang benerin.'],
+      ['Data pelanggan saya aman?', 'Datanya disimpan di akun milik kamu sendiri, misalnya Google Sheets kamu. Jadi kamu yang pegang.'],
+      ['Berapa lama jadinya?', 'Yang sederhana 1–3 hari. Yang lebih lengkap sekitar 5 hari. Yang custom tergantung kebutuhan.']
+    ];
+    const faqs = faqDefs.map((d, i) => {
+      const open = this.state.faqOpen === i;
+      return {
+        q: d[0], a: d[1], open: open,
+        panelStyle: 'display:grid;transition:grid-template-rows 0.4s cubic-bezier(.2,.8,.2,1),opacity 0.4s;' + (open ? 'grid-template-rows:1fr;opacity:1' : 'grid-template-rows:0fr;opacity:0'),
+        iconStyle: 'flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;transition:transform 0.3s,background 0.3s;' + (open ? 'background:#EF7A30;color:#262C31;transform:rotate(45deg)' : 'background:#FFF6EE;color:#262C31'),
+        toggle: () => this.setState({ faqOpen: open ? -1 : i })
+      };
+    });
+    return {
+      igLink: this.props.igLink ?? '#', ttLink: this.props.ttLink ?? '#', ytLink: this.props.ytLink ?? '#', mailLink: this.props.mailLink ?? 'mailto:halo@dicodinginaja.com',
+      waLink: wa('Halo dicodinginAJA, saya mau konsultasi gratis.'),
+      waBasic: wa('Halo dicodinginAJA, saya tertarik paket Basic.'),
+      waPremium: wa('Halo dicodinginAJA, saya tertarik paket Premium.'),
+      waCustom: wa('Halo dicodinginAJA, saya mau konsultasi paket Custom.'),
+      heroLines: heroLines, heroChip: heroChip, heroDots: heroDots,
+      n1: n1, n2: n2, n3: n3, n4: n4,
+      flipStyle: flipStyle, showProducts: this.state.view === 'products', showCustom: this.state.view === 'custom',
+      toCustom: () => this.flipTo('custom'), toProducts: () => this.flipTo('products'),
+      catChips: catChips, products: products,
+      n8nH: Math.round(460 * sc) + 'px', n8nInner: 'position:absolute;left:0;top:0;width:900px;height:460px;transform-origin:0 0;transform:scale(' + sc.toFixed(4) + ')',
+      pctOff: '-' + Math.round(50 * cc) + '%',
+      costNow: 'Rp' + (Math.round((14000 - 7000 * cc) / 100) * 100).toLocaleString('id-ID'),
+      barNow: 'display:block;height:100%;border-radius:999px;background:#EF7A30;width:' + (100 - 50 * cc).toFixed(1) + '%',
+      waConvera: wa('Halo dicodinginAJA, saya pasang iklan Meta dan mau tanya soal Convera.'),
+      nTrig: nTrig, nAgent: nAgent, nSheet: nSheet, nSend: nSend, sModel: sModel, sMem: sMem, sTool: sTool,
+      e1: edge(k >= 2), e2: edge(k >= 6), e3: edge(k >= 8), l1: subLine(0), l2: subLine(1), l3: subLine(2),
+      toast: k >= 10, execCount: this.state.execs.toLocaleString('id-ID'),
+      showQ: k >= 1, showTyping: k >= 3 && k < 10, showA: k >= 10, showSheet: k >= 8,
+      phoneStatus: k >= 3 && k < 10 ? 'sedang mengetik…' : 'online',
+      runDemo: () => { this.setState({ step: 0 }); if (this.t2) { clearInterval(this.t2); this.t2 = setInterval(() => this.tickDemo(), 850); } },
+      csTabs: csTabs, cs0: ci === 0, cs1: ci === 1, cs2: ci === 2, cs3: ci === 3, cs4: ci === 4,
+      webShots: webShots, webDots: webDots, andShots: andShots, iosShots: iosShots,
+      waToko: wa('Halo dicodinginAJA, saya punya toko online, mau tanya soal bot WA.'),
+      waLaundry: wa('Halo dicodinginAJA, saya punya usaha laundry/salon, mau tanya soal bot WA.'),
+      waWarung: wa('Halo dicodinginAJA, saya punya warung/kafe, mau tanya soal sistem kasir dan rekap.'),
+      waDemo: wa('Halo kak, kaos hitam oversize size L masih ada?'),
+      testi: testi, trackStyle: trackStyle, dots: dots,
+      prev: () => { this.setState({ slide: (s - 1 + pages) % pages }); this.restart('slide', 5200, pages); },
+      next: () => { this.setState({ slide: (s + 1) % pages }); this.restart('slide', 5200, pages); },
+      faqs: faqs
+    };
+  }
+}
+</script>
+</body>
+</html>
