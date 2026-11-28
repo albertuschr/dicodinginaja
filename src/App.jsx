@@ -9,12 +9,10 @@ import Testimoni from './sections/Testimoni.jsx';
 import Faq from './sections/Faq.jsx';
 import Cta from './sections/Cta.jsx';
 import Footer from './sections/Footer.jsx';
-import Bumper from './components/Bumper.jsx';
 
 export default function App() {
   return (
     <div className="page">
-      <Bumper />
       <Navbar />
       <Hero />
       <Kenapa />
